@@ -57,7 +57,6 @@ describe("Given a uiReducer", () => {
 
     describe("and it receives an initial state with isOpen true and a hideModal action creator", () => {
       test("Then it should return a copy of the initial state with isModal false", () => {
-        debugger;
         const initialUiState: UiState = {
           ...mockUiState,
           modal: {
@@ -76,7 +75,7 @@ describe("Given a uiReducer", () => {
         };
 
         const newUiState = uiReducer(initialUiState, hideModalActionCreator());
-        debugger;
+
         expect(newUiState).toStrictEqual(expectedUiState);
       });
     });
