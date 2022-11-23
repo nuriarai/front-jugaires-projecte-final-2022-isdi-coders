@@ -14,12 +14,12 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: initialUiState,
   reducers: {
-    showLoading: (currentUiState) => ({
+    showLoading: (currentUiState): UiState => ({
       ...currentUiState,
       isLoading: true,
     }),
 
-    hideLoading: (currentUiState) => ({
+    hideLoading: (currentUiState): UiState => ({
       ...currentUiState,
       isLoading: false,
     }),
@@ -27,16 +27,21 @@ const uiSlice = createSlice({
     showModal: (
       currentUiState,
       action: PayloadAction<ShowModalActionPayload>
-    ) => ({
+    ): UiState => ({
       ...currentUiState,
-      isOpen: true,
-      modalType: action.payload.modalType,
-      message: action.payload.message,
+      modal: {
+        isOpen: true,
+        modalType: action.payload.modalType,
+        message: action.payload.message,
+      },
     }),
 
-    hideModal: (currentUiState) => ({
+    hideModal: (currentUiState): UiState => ({
       ...currentUiState,
-      isOpen: false,
+      modal: {
+        ...currentUiState.modal,
+        isOpen: false,
+      },
     }),
   },
 });
