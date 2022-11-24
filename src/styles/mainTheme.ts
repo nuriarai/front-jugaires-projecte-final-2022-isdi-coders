@@ -5,11 +5,11 @@ const mainTheme: DefaultTheme = {
     primary: {
       dark: "#180d3c",
       base: "#413267",
+      light: "#fdf1dd",
     },
     contrast: {
       base: "#fcbc1d",
-      ligthter: "#f9d18d",
-      ligthtest: "#fdf1dd",
+      lighter: "#f9d18d",
     },
     muted: "#bbb",
     success: {
@@ -40,6 +40,11 @@ const mainTheme: DefaultTheme = {
   sizes: {
     paddingSmall: "20px",
     paddingBig: "40px",
+  },
+  buttonsSizes: {
+    big: "335px",
+    medium: "220px",
+    small: "133px",
   },
 };
 
