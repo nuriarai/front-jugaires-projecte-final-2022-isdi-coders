@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import "@fontsource/open-sans";
+import "@fontsource/oranienbaum";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -94,6 +96,12 @@ h6 {
   margin-top: 0;
 }
 
+body, input, textarea {
+  font-family: "Open Sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+}
+ h1 {
+  font-family: "Oranienbaum", "Cambria", "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+ }
 
 `;
 
