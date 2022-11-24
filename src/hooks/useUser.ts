@@ -19,8 +19,6 @@ const useUser = () => {
         })
       );
     } catch (error: unknown) {
-      debugger;
-      console.log(error);
       let messageAxios = "Global error";
       if (error instanceof AxiosError) {
         error as AxiosError<AxiosResponse>;
