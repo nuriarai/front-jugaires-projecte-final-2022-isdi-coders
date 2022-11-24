@@ -6,11 +6,11 @@ declare module "styled-components" {
       primary: {
         dark: string;
         base: string;
+        light: string;
       };
       contrast: {
         base: string;
-        ligthter: string;
-        ligthtest: string;
+        lighter: string;
       };
       muted: string;
       success: {
@@ -41,6 +41,11 @@ declare module "styled-components" {
     sizes: {
       paddingSmall: string;
       paddingBig: string;
+    };
+    buttonsSizes: {
+      big: string;
+      medium: string;
+      small: string;
     };
   }
 }

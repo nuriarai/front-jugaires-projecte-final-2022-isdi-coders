@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { UserRegisterData } from "../types/types";
-import ProviderWrapper from "../mooks/ProviderWrapper";
+import ProviderWrapper from "../utils/ProviderWrapper";
 import { showModalActionCreator } from "../redux/features/uiSlice";
 import { ShowModalActionPayload } from "../redux/features/types";
 import { store } from "../redux/store";
