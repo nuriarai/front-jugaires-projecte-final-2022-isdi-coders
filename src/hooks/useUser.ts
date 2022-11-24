@@ -19,20 +19,12 @@ const useUser = () => {
         })
       );
     } catch (error: unknown) {
-      let messageAxios: string;
+      console.log(error);
       if (error instanceof AxiosError) {
-        error as AxiosError<AxiosResponse>;
-        if (error.response) {
-          messageAxios = error.response?.data.error!;
-        } else if (error.request) {
-          messageAxios = "Request with no response";
-        } else {
-          messageAxios = `Error ${error.message}`;
-        }
         dispatch(
           showModalActionCreator({
             modalType: "error",
-            message: messageAxios,
+            message: (error as AxiosError<AxiosResponse>).response?.data.error!,
           })
         );
       }
