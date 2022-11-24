@@ -2,8 +2,8 @@ import axios, { AxiosError } from "axios";
 import { showModalActionCreator } from "../redux/features/uiSlice";
 import { useAppDispatch } from "../redux/hooks";
 
-import { UserRegisterData } from "../types/types.js";
-import { AxiosResponse } from "./types.js";
+import { UserRegisterData } from "../types/types";
+import { AxiosResponse } from "./types";
 
 const apiUrl = process.env.REACT_APP_API;
 
@@ -15,11 +15,11 @@ const useUser = () => {
       dispatch(
         showModalActionCreator({
           modalType: "success",
-          message: "T'has registrat correctament. Benvingut/da a Jugaires",
+          message: "T'has registrat correctament. Benvingut/da a Jugaires!",
         })
       );
     } catch (error: unknown) {
-      let messageAxios = "Global error";
+      let messageAxios: string;
       if (error instanceof AxiosError) {
         error as AxiosError<AxiosResponse>;
         if (error.response) {

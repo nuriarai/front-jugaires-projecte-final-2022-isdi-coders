@@ -28,9 +28,9 @@ describe("Given a useUser custom hook", () => {
         modalType: "success",
         message: "T'has registrat correctament. Benvingut/da a Jugaires!",
       };
-      debugger;
+
       await userRegister(newUser);
-      debugger;
+
       expect(dispatchSpy).toHaveBeenCalledWith(
         showModalActionCreator(modalPayload)
       );

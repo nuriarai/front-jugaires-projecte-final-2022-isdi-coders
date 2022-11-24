@@ -11,7 +11,7 @@ const handlers = [
     if (username === "registeredUser") {
       return res(
         ctx.status(409),
-        ctx.json({ error: "This username is already registered" })
+        ctx.json({ error: "Aquest usuari ja està registrat" })
       );
     }
 
