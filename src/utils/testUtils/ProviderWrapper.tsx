@@ -1,8 +1,8 @@
 import { Provider } from "react-redux";
-import { store } from "../redux/store";
+import { store } from "../../redux/store";
 import { ThemeProvider } from "styled-components";
-import mainTheme from "../styles/mainTheme";
-import GlobalStyles from "../styles/GlobalStyles";
+import mainTheme from "../../styles/mainTheme";
+import GlobalStyles from "../../styles/GlobalStyles";
 
 interface ProviderWrapperProps {
   children: JSX.Element | JSX.Element[];
