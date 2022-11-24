@@ -5,7 +5,7 @@ const Layout = (): JSX.Element => {
   return (
     <LayoutStyled>
       <main>
-        <div className="app">Jugaires</div>
+        <h1 className="app">Jugaires</h1>
         <Button className="button__main" text="Registra't" />
       </main>
     </LayoutStyled>
