@@ -19,7 +19,6 @@ const useUser = () => {
         })
       );
     } catch (error: unknown) {
-      console.log(error);
       if (error instanceof AxiosError) {
         dispatch(
           showModalActionCreator({
