@@ -1,5 +1,6 @@
 import mockUiState from "../../mooks/mockUiState";
-import { ShowModalActionPayload, UiState } from "../../types/uiTypes";
+import { ShowModalActionPayload, UiState } from "./types";
+
 import {
   hideLoadingActionCreator,
   hideModalActionCreator,
