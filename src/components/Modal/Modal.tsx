@@ -3,11 +3,11 @@ import Button from "../Button/Button";
 import { useAppDispatch } from "../../redux/hooks";
 import { hideModalActionCreator } from "../../redux/features/uiSlice";
 
-interface modalProps {
+interface ModalProps {
   modalType: string;
   message: string;
 }
-const Modal = ({ modalType, message }: modalProps): JSX.Element => {
+const Modal = ({ modalType, message }: ModalProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
   return (
