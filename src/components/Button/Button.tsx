@@ -6,6 +6,7 @@ interface ButtonProps {
   className?: string;
   isDisabled?: boolean;
   isReversed?: boolean;
+  ariaLabel?: string;
   semantic: "button" | "icon";
 }
 
@@ -15,10 +16,12 @@ const Button = ({
   className,
   isDisabled,
   isReversed,
+  ariaLabel,
   semantic = "button",
 }: ButtonProps): JSX.Element => {
   return (
     <ButtonStyled
+      aria-label={ariaLabel}
       className={isReversed ? `button--reversed ${className}` : `${className}`}
       onClick={action}
       disabled={isDisabled}
