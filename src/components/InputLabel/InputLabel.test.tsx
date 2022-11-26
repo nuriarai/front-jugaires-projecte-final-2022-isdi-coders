@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import InputLabel from "./InputLabel";
 

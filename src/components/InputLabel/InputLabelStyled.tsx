@@ -7,12 +7,12 @@ const InputLabelStyled = styled.div`
     margin-bottom: 15px;
   }
   input {
-    ::placeholder: ${(props) => props.theme.colors.muted};
     height: 55px;
     padding: 0 20px;
+    color: ${(props) => props.theme.colors.primary.dark};
     background-color: ${(props) => props.theme.colors.primary.light};
     border-radius: ${(props) => props.theme.borderRadius};
-    color: ${(props) => props.theme.colors.primary.dark};
+    ::placeholder: ${(props) => props.theme.colors.muted};
   }
 `;
 
