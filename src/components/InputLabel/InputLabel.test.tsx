@@ -9,10 +9,12 @@ describe("Given an input/label component", () => {
 
       renderWithProviders(
         <InputLabel
-          label={labelText}
-          type="text"
-          changeAction={jest.fn}
-          value=""
+          labelText="Usuari"
+          inputId="username"
+          wrapperClassName="wrapper"
+          inputType="text"
+          inputChangeAction={jest.fn}
+          inputValue=""
         />
       );
 
