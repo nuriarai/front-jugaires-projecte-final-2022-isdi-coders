@@ -19,14 +19,12 @@ const useUser = () => {
         })
       );
     } catch (error: unknown) {
-      if (error instanceof AxiosError) {
-        dispatch(
-          showModalActionCreator({
-            modalType: "error",
-            message: (error as AxiosError<AxiosResponse>).response?.data.error!,
-          })
-        );
-      }
+      dispatch(
+        showModalActionCreator({
+          modalType: "error",
+          message: (error as AxiosError<AxiosResponse>).response?.data.error!,
+        })
+      );
     }
   };
   return {
