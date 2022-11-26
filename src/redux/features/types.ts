@@ -1,4 +1,5 @@
-export type modalTypes = "success" | "alert" | "error" | "none";
+export type modalTypes = "success" | "alert" | "error" | "info";
+
 export interface UiState {
   isLoading: boolean;
   modal: {

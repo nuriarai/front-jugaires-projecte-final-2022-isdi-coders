@@ -63,7 +63,7 @@ describe("Given a uiReducer", () => {
           modal: {
             isOpen: true,
             message: "",
-            modalType: "none",
+            modalType: "success",
           },
         };
 
