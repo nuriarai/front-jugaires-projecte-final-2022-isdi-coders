@@ -5,7 +5,7 @@ const mockUiState: UiState = {
   modal: {
     isOpen: false,
     message: "",
-    modalType: "none",
+    modalType: "success",
   },
 };
 

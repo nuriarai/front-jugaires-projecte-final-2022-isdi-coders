@@ -6,7 +6,7 @@ const initialUiState: UiState = {
   modal: {
     isOpen: false,
     message: "",
-    modalType: "none",
+    modalType: "success",
   },
 };
 
