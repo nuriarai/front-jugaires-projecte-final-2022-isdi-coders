@@ -11,7 +11,7 @@ const Modal = ({ modalType, message }: ModalProps): JSX.Element => {
   const dispatch = useAppDispatch();
 
   return (
-    <ModalStyled className={modalType}>
+    <ModalStyled className={`modal--${modalType}`}>
       <p>{message}</p>
       <Button
         ariaLabel="close"

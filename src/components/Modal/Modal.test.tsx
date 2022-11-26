@@ -16,7 +16,7 @@ describe("Given a Modal component", () => {
   describe("When is rendered with an 'error' type", () => {
     test("Then it should show the modal with an 'error' class name and the text provided", () => {
       const modalMessage = "Alguna cosa no ha anat bé";
-      const modalType = "modal--error";
+      const modalType = "error";
       const expectedModals: number = 1;
 
       const { container } = renderWithProviders(
@@ -48,7 +48,7 @@ describe("Given a Modal component", () => {
       );
 
       // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-      const modal = container.getElementsByClassName("success");
+      const modal = container.getElementsByClassName("modal--success");
 
       const expectedModals: number = 1;
       const modalText = screen.queryByText(modalMessage);
