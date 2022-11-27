@@ -4,6 +4,7 @@ import useUser from "../../hooks/useUser";
 import { useState } from "react";
 import RegisterFormStyled from "./RegisterFormStyled";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
 const initialFormData: UserRegisterData = {
   username: "",
@@ -68,7 +69,7 @@ const RegisterForm = (): JSX.Element => {
         action={() => {}}
       />
       <div className="access__link-text">
-        Si ja tens compte ves a l'inici de sessió
+        Si ja tens compte ves a l'<Link to="/">inici de sessió</Link>
       </div>
     </RegisterFormStyled>
   );
