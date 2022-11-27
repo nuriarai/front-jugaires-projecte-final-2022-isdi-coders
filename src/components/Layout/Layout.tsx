@@ -1,12 +1,16 @@
+import { Routes, Route } from "react-router-dom";
 import LayoutStyled from "./LayoutStyled";
-import RegisterForm from "../RegisterForm/RegisterForm";
+import RegisterPage from "../../pages/RegisterPage";
 
 const Layout = (): JSX.Element => {
   return (
     <LayoutStyled>
       <main>
-        <h1>Jugaires</h1>
-        <RegisterForm />
+        <Routes>
+          <Route path="/" element={<RegisterPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<p>Camí no resolt</p>} />
+        </Routes>
       </main>
     </LayoutStyled>
   );
