@@ -4,6 +4,8 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { store } from "./redux/store";
+import "@fontsource/open-sans";
+import "@fontsource/oranienbaum";
 import mainTheme from "./styles/mainTheme";
 import GlobalStyles from "./styles/GlobalStyles";
 import App from "./App";
