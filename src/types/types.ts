@@ -10,3 +10,13 @@ export interface UserRegisterData {
   password: string;
   email: string;
 }
+
+export interface UserLoginData {
+  username: string;
+  token: string;
+  id: string;
+}
+
+export interface UserState extends UserLoginData {
+  isLogged: boolean;
+}

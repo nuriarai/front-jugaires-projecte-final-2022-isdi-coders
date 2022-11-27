@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 import { uiReducer } from "../../redux/features/uiSlice";
+import { userReducer } from "../../redux/features/userSlice/userSlice";
 import { RootState, store } from "../../redux/store";
 import { InitialEntry } from "@remix-run/router";
 import mainTheme from "../../styles/mainTheme";
@@ -37,7 +38,7 @@ const renderWithProviders = (
   {
     preloadedState,
     store = configureStore({
-      reducer: { ui: uiReducer },
+      reducer: { ui: uiReducer, user: userReducer },
       preloadedState,
     }),
     ...renderOptions
