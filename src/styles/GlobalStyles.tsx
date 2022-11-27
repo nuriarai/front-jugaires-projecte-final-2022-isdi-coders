@@ -1,6 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import "@fontsource/open-sans";
-import "@fontsource/oranienbaum";
 
 const GlobalStyles = createGlobalStyle`
 
