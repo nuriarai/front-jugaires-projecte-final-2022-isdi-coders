@@ -83,12 +83,20 @@ h6 {
   margin-top: 0;
 }
 
-body, input, textarea {
+body {
+  background-color: ${(props) => props.theme.colors.primary.dark};
+}
+
+body, input, textarea, select {
   font-family: "Open Sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+  font-size: ${(props) => props.theme.fontSizes.normal};
+  color: ${(props) => props.theme.colors.primary.dark};
 }
 h1 {
   font-family: "Oranienbaum", "Cambria", "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
 }
+
+
 `;
 
 export default GlobalStyles;

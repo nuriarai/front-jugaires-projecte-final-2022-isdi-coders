@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 import CloseIcon from "../../assets/icons/CloseIcon.svg";
 
-interface styledButtonProps {
+interface StyledButtonProps {
   semantic: "button" | "icon";
 }
 
-const ButtonStyled = styled.button<styledButtonProps>`
+const ButtonStyled = styled.button<StyledButtonProps>`
   ${(props) => props.semantic === "button" && buttonStyle};
   ${(props) => props.semantic === "icon" && iconStyle};
 `;
@@ -33,11 +33,11 @@ const buttonStyle = css`
   font-size: ${(props) => props.theme.fontSizes.big};
   &:hover,
   &:focus,
-  .button--reversed {
-    background-color: ${(props) => props.theme.colors.primary.light};
+  &.button--reversed {
+    background-color: ${(props) => props.theme.colors.contrast.base};
     color: ${(props) => props.theme.colors.primary.dark};
   }
-  .button--reversed {
+  &.button--reversed {
     &:hover,
     &:focus {
       background-color: ${(props) => props.theme.colors.primary.dark};
