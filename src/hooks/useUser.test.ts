@@ -89,4 +89,30 @@ describe("Given a useUser custom hook", () => {
       );
     });
   });
+
+  describe("When its method loginUser is invoked with a correct username 'admin' and incorrect password", () => {
+    test("Then it should return a 401 error with an 'Usuari o password incorrecte' message", async () => {
+      const {
+        result: {
+          current: { userLogin },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+      const user: UserCredentialsData = {
+        username: "admin",
+        password: "incorrectpassword",
+      };
+      const modalPayload: ShowModalActionPayload = {
+        modalType: "error",
+        message: "Usuari o password incorrecte",
+      };
+
+      await userLogin(user);
+
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        showModalActionCreator(modalPayload)
+      );
+    });
+  });
 });
