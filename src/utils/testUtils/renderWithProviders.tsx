@@ -37,6 +37,7 @@ const renderWithProviders = (
   ui: React.ReactElement,
   {
     preloadedState,
+    initialEntries,
     store = configureStore({
       reducer: { ui: uiReducer, user: userReducer },
       preloadedState,
