@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const RegisterFormStyled = styled.form`
+const AccessFormStyled = styled.form`
   width: 100%;
   max-width: 335px;
   margin: 0 auto;
@@ -8,18 +8,22 @@ const RegisterFormStyled = styled.form`
     ${(props) => props.theme.sizes.paddingSmall};
   border-radius: ${(props) => props.theme.borderRadius};
   background-color: ${(props) => props.theme.colors.primary.base};
+
   .access__link-text {
     color: ${(props) => props.theme.colors.primary.light};
     font-size: ${(props) => props.theme.fontSizes.small};
     margin-top: 15px;
   }
 
+  .access__link {
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
   button {
     margin-top: 10px;
   }
-
-  @media screen and (min-width: ${(props) => props.theme.mediaSizes.medium}) {
-  }
 `;
 
-export default RegisterFormStyled;
+export default AccessFormStyled;

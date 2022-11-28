@@ -1,4 +1,4 @@
-import { UserRegisterData } from "../../types/types";
+import { UserCredentialsData } from "../../types/types";
 import InputLabel from "../InputLabel/InputLabel";
 import useUser from "../../hooks/useUser";
 import { useState } from "react";
@@ -6,14 +6,13 @@ import AccessFormStyled from "../StyledComponents/AccessFormStyled";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
-const initialFormData: UserRegisterData = {
+const initialFormData: UserCredentialsData = {
   username: "",
   password: "",
-  email: "",
 };
 
-const RegisterForm = (): JSX.Element => {
-  const { userRegister } = useUser();
+const LoginForm = (): JSX.Element => {
+  const { userLogin } = useUser();
   const [formData, setFormData] = useState(initialFormData);
 
   const handleFormChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,17 +25,16 @@ const RegisterForm = (): JSX.Element => {
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const formDataToSubmit: UserRegisterData = {
+    const formDataToSubmit: UserCredentialsData = {
       username: formData.username,
       password: formData.password,
-      email: formData.email,
     };
-    await userRegister(formDataToSubmit);
+    await userLogin(formDataToSubmit);
   };
 
   return (
     <AccessFormStyled
-      className="access access--register"
+      className="access access--login"
       onSubmit={(event) => handleSubmit(event)}
     >
       <InputLabel
@@ -53,29 +51,21 @@ const RegisterForm = (): JSX.Element => {
         inputType="password"
         inputChangeAction={handleFormChange}
       />
-      <InputLabel
-        labelText="Email"
-        inputId="email"
-        wrapperClassName="access__wrap-label-input access__wrap-label-input--email"
-        inputType="text"
-        inputChangeAction={handleFormChange}
-        inputValue={formData.email}
-      />
       <Button
         className="button button--access button--register"
-        text="Registra't"
+        text="Entra"
         semantic="button"
         isReversed
         action={() => {}}
       />
       <div className="access__link-text">
-        Si ja tens compte ves a l'
-        <Link to="/login" className="access__link access__link--to-login">
-          inici de sessió
+        Si encara no tens compte ves al
+        <Link className="access__link access__link--to-register" to="/register">
+          registre
         </Link>
       </div>
     </AccessFormStyled>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
