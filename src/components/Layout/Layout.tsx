@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import LayoutStyled from "./LayoutStyled";
-import RegisterPage from "../../pages/RegisterPage";
+import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 
 const Layout = (): JSX.Element => {
   return (
