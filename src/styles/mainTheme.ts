@@ -26,7 +26,8 @@ const mainTheme: DefaultTheme = {
     },
   },
   fontSizes: {
-    header: "5rem",
+    header: "4.375rem",
+    headerMobile: "3.75rem",
     big: "1.25rem",
     normal: "1.125rem",
     small: "1rem",

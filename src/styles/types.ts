@@ -28,6 +28,7 @@ declare module "styled-components" {
     };
     fontSizes: {
       header: string;
+      headerMobile: string;
       big: string;
       normal: string;
       small: string;

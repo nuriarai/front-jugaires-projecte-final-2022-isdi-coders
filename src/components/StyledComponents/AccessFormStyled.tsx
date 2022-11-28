@@ -5,7 +5,8 @@ const AccessFormStyled = styled.div`
     width: 100%;
     max-width: 335px;
     margin: 0 auto;
-    padding: ${(props) => props.theme.sizes.paddingBig}${(props) => props.theme.sizes.paddingSmall};
+    padding: ${(props) => props.theme.sizes.paddingBig}
+      ${(props) => props.theme.sizes.paddingSmall};
     border-radius: ${(props) => props.theme.borderRadius};
     background-color: ${(props) => props.theme.colors.primary.base};
   }
@@ -20,7 +21,8 @@ const AccessFormStyled = styled.div`
     gap: 50px;
     form {
       max-width: 375px;
-      padding: ${(props) => props.theme.sizes.paddingBig}${(props) => props.theme.sizes.paddingBig};
+      padding: ${(props) => props.theme.sizes.paddingBig}
+        ${(props) => props.theme.sizes.paddingBig};
       margin: 0;
     }
     .access__image--login {
