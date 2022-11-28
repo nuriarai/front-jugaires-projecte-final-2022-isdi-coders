@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { UserRegisterData } from "../types/types";
+import { UserCredentialsData, UserRegisterData } from "../types/types";
 
 const urlApi = process.env.REACT_APP_API;
 
@@ -16,6 +16,20 @@ const handlers = [
     }
 
     return res(ctx.status(201), ctx.json({ user }));
+  }),
+
+  rest.post(`${urlApi}/users/login`, async (req, res, ctx) => {
+    const UserLoginData = await req.json<UserCredentialsData>();
+    const { password } = UserLoginData;
+
+    if (password !== "adminadmin") {
+      return res(
+        ctx.status(401),
+        ctx.json({ error: "Usuari o password incorrecte" })
+      );
+    }
+
+    return res(ctx.status(201), ctx.json({ token: "adminToken" }));
   }),
 ];
 

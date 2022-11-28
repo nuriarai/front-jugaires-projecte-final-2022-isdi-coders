@@ -1,12 +1,18 @@
 import { renderHook } from "@testing-library/react";
-import { UserRegisterData } from "../types/types";
+import { UserCredentialsData, UserRegisterData } from "../types/types";
 import ProviderWrapper from "../utils/testUtils/ProviderWrapper";
 import { showModalActionCreator } from "../redux/features/uiSlice";
 import { ShowModalActionPayload } from "../redux/features/types";
 import { store } from "../redux/store";
 import useUser from "./useUser";
+import { loginUserActionCreator } from "../redux/features/userSlice/userSlice";
+import { JwtCustomPayload } from "./types";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
+
+jest.mock("jwt-decode", () => {
+  return () => ({ id: "adminId", username: "admin" } as JwtCustomPayload);
+});
 
 describe("Given a useUser custom hook", () => {
   const {
@@ -53,6 +59,33 @@ describe("Given a useUser custom hook", () => {
 
       expect(dispatchSpy).toHaveBeenCalledWith(
         showModalActionCreator(modalPayload)
+      );
+    });
+  });
+
+  describe("When its method loginUser is invoked with a correct username 'admin' and password 'adminadmin'", () => {
+    test("Then it should invoke dispatch with loginUserActionAcreator", async () => {
+      const {
+        result: {
+          current: { userLogin },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+      const user: UserCredentialsData = {
+        username: "admin",
+        password: "adminadmin",
+      };
+      const loginActionPayload = {
+        username: "admin",
+        id: "adminId",
+        token: "adminToken",
+      };
+
+      await userLogin(user);
+
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        loginUserActionCreator(loginActionPayload)
       );
     });
   });
