@@ -1,7 +1,10 @@
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { showModalActionCreator } from "../redux/features/uiSlice";
-import { loginUserActionCreator } from "../redux/features/userSlice/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../redux/features/userSlice/userSlice";
 import { useAppDispatch } from "../redux/hooks";
 
 import { UserCredentialsData, UserRegisterData } from "../types/types";
@@ -64,7 +67,7 @@ const useUser = () => {
   const userLogout = () => {
     window.localStorage.removeItem("token");
 
-    dispatch(userLogoutActionCreator());
+    dispatch(logoutUserActionCreator());
   };
 
   return {
