@@ -3,6 +3,7 @@ import LayoutStyled from "./LayoutStyled";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import GamesPage from "../../pages/GamesPage/GamesPage";
 
 const Layout = (): JSX.Element => {
   return (
@@ -12,6 +13,7 @@ const Layout = (): JSX.Element => {
           <Route path="/" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/partides" element={<GamesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
