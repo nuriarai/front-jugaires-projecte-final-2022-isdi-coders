@@ -61,9 +61,16 @@ const useUser = () => {
     }
   };
 
+  const userLogout = () => {
+    window.localStorage.removeItem("token");
+
+    dispatch(userLogoutActionCreator());
+  };
+
   return {
     userRegister,
     userLogin,
+    userLogout,
   };
 };
 export default useUser;
