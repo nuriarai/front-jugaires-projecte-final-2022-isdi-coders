@@ -32,7 +32,8 @@ describe("Given a useUser custom hook", () => {
       };
       const modalPayload: ShowModalActionPayload = {
         modalType: "success",
-        message: "T'has registrat correctament. Benvingut/da a Jugaires!",
+        message:
+          "T'has registrat correctament. Ara entra amb les teves credencials",
       };
 
       await userRegister(newUser);

@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 import { showModalActionCreator } from "../redux/features/uiSlice";
 import { loginUserActionCreator } from "../redux/features/userSlice/userSlice";
 import { useAppDispatch } from "../redux/hooks";
@@ -11,6 +12,7 @@ const apiUrl = process.env.REACT_APP_API;
 
 const useUser = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const userRegister = async (registerData: UserRegisterData) => {
     try {
@@ -18,9 +20,11 @@ const useUser = () => {
       dispatch(
         showModalActionCreator({
           modalType: "success",
-          message: "T'has registrat correctament. Benvingut/da a Jugaires!",
+          message:
+            "T'has registrat correctament. Ara entra amb les teves credencials",
         })
       );
+      navigate("/login");
     } catch (error: unknown) {
       dispatch(
         showModalActionCreator({
@@ -45,7 +49,7 @@ const useUser = () => {
           token,
         })
       );
-
+      navigate("/partides");
       localStorage.setItem("token", token);
     } catch (error: unknown) {
       dispatch(
