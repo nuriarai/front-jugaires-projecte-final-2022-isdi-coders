@@ -11,6 +11,11 @@ export interface UserRegisterData {
   email: string;
 }
 
+export interface UserCredentialsData {
+  username: string;
+  password: string;
+}
+
 export interface UserLoginData {
   username: string;
   token: string;
