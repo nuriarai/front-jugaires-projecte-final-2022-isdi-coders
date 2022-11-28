@@ -17,7 +17,7 @@ describe("Given a register form component", () => {
       renderWithProviders(<RegisterForm />);
 
       const usernameInput = screen.queryByLabelText("Usuari:");
-      const passwordInput = screen.queryByLabelText("Contrassenya:");
+      const passwordInput = screen.queryByLabelText("Contrasenya:");
       const emailInput = screen.queryByRole("textbox", { name: "Email:" });
 
       expect(usernameInput).toBeInTheDocument();
@@ -31,11 +31,11 @@ describe("Given a register form component", () => {
       renderWithProviders(<RegisterForm />);
 
       const usernameInput = screen.getByLabelText("Usuari:");
-      await userEvent.type(usernameInput, "bigband");
-      const passwordInput = screen.getByLabelText("Contrassenya:");
-      await userEvent.type(passwordInput, "bigband");
+      await userEvent.type(usernameInput, "marianicu");
+      const passwordInput = screen.getByLabelText("Contrasenya:");
+      await userEvent.type(passwordInput, "marianicu");
       const emailInput = screen.getByRole("textbox", { name: "Email:" });
-      await userEvent.type(emailInput, "big@band.com");
+      await userEvent.type(emailInput, "maria@nicu.com");
 
       const button = screen.getByRole("button")!;
       await userEvent.click(button);

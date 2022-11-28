@@ -5,6 +5,7 @@ import { useState } from "react";
 import AccessFormStyled from "../StyledComponents/AccessFormStyled";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+import cartes from "../../assets/icons/cartes.svg";
 
 const initialFormData: UserRegisterData = {
   username: "",
@@ -35,45 +36,53 @@ const RegisterForm = (): JSX.Element => {
   };
 
   return (
-    <AccessFormStyled
-      className="access access--register"
-      onSubmit={(event) => handleSubmit(event)}
-    >
-      <InputLabel
-        labelText="Usuari"
-        inputId="username"
-        wrapperClassName="access__wrap-input access__wrap-label-input--user"
-        inputType="text"
-        inputChangeAction={handleFormChange}
+    <AccessFormStyled>
+      <form
+        className="access access--register"
+        onSubmit={(event) => handleSubmit(event)}
+      >
+        <InputLabel
+          labelText="Usuari"
+          inputId="username"
+          wrapperClassName="access__wrap-input access__wrap-label-input--user"
+          inputType="text"
+          inputChangeAction={handleFormChange}
+        />
+        <InputLabel
+          labelText="Contrasenya"
+          inputId="password"
+          wrapperClassName="access__wrap-label-input access__wrap-label-input--password"
+          inputType="password"
+          inputChangeAction={handleFormChange}
+        />
+        <InputLabel
+          labelText="Email"
+          inputId="email"
+          wrapperClassName="access__wrap-label-input access__wrap-label-input--email"
+          inputType="text"
+          inputChangeAction={handleFormChange}
+          inputValue={formData.email}
+        />
+        <Button
+          className="button button--access button--register"
+          text="Registra't"
+          semantic="button"
+          isReversed
+          action={() => {}}
+        />
+        <div className="access__link-text">
+          Si ja tens compte pots anar a l'
+          <Link to="/login" className="access__link access__link--to-login">
+            inici de sessió
+          </Link>
+        </div>
+      </form>
+
+      <img
+        className="access__image--login"
+        src={cartes}
+        alt="perfil d'unes cartes a la ma"
       />
-      <InputLabel
-        labelText="Contrassenya"
-        inputId="password"
-        wrapperClassName="access__wrap-label-input access__wrap-label-input--password"
-        inputType="password"
-        inputChangeAction={handleFormChange}
-      />
-      <InputLabel
-        labelText="Email"
-        inputId="email"
-        wrapperClassName="access__wrap-label-input access__wrap-label-input--email"
-        inputType="text"
-        inputChangeAction={handleFormChange}
-        inputValue={formData.email}
-      />
-      <Button
-        className="button button--access button--register"
-        text="Registra't"
-        semantic="button"
-        isReversed
-        action={() => {}}
-      />
-      <div className="access__link-text">
-        Si ja tens compte ves a l'
-        <Link to="/login" className="access__link access__link--to-login">
-          inici de sessió
-        </Link>
-      </div>
     </AccessFormStyled>
   );
 };

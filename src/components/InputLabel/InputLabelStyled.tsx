@@ -16,6 +16,7 @@ const InputLabelStyled = styled.div`
     color: ${(props) => props.theme.colors.primary.dark};
     background-color: ${(props) => props.theme.colors.primary.light};
     border-radius: ${(props) => props.theme.borderRadius};
+    box-shadow: inset 0px 1px 8px rgba(0, 0, 0, 0.6);
   }
 
   input::placeholder {

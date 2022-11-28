@@ -90,9 +90,7 @@ body, input, textarea, select {
   font-size: ${(props) => props.theme.fontSizes.normal};
   color: ${(props) => props.theme.colors.primary.dark};
 }
-h1 {
-  font-family: "Oranienbaum", "Cambria", "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-}
+
 
 
 `;
