@@ -2,7 +2,7 @@ import { UserRegisterData } from "../../types/types";
 import InputLabel from "../InputLabel/InputLabel";
 import useUser from "../../hooks/useUser";
 import { useState } from "react";
-import RegisterFormStyled from "./RegisterFormStyled";
+import AccessFormStyled from "../StyledComponents/AccessFormStyled";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
@@ -35,7 +35,7 @@ const RegisterForm = (): JSX.Element => {
   };
 
   return (
-    <RegisterFormStyled
+    <AccessFormStyled
       className="access access--register"
       onSubmit={(event) => handleSubmit(event)}
     >
@@ -69,9 +69,12 @@ const RegisterForm = (): JSX.Element => {
         action={() => {}}
       />
       <div className="access__link-text">
-        Si ja tens compte ves a l'<Link to="/">inici de sessió</Link>
+        Si ja tens compte ves a l'
+        <Link to="/login" className="access__link access__link--to-login">
+          inici de sessió
+        </Link>
       </div>
-    </RegisterFormStyled>
+    </AccessFormStyled>
   );
 };
 
