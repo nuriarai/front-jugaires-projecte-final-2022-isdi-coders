@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const LayoutStyled = styled.div`
-  padding: 20px;
   .page__title {
     font-family: "Oranienbaum", "Cambria", "Hoefler Text", Utopia,
       "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman",
@@ -22,12 +21,17 @@ const LayoutStyled = styled.div`
   a,
   a:visited {
     color: ${(props) => props.theme.colors.contrast.base};
-    text-decoration: underline;
     &:hover,
     &:focus {
       color: ${(props) => props.theme.colors.primary.light};
       text-decoration: underline;
     }
+  }
+
+  .container {
+    padding: 20px;
+    width: 100%;
+    max-width: 1280px;
   }
 `;
 
