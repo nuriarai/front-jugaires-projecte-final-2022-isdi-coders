@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const LayoutStyled = styled.div`
+  overflow-x: hidden;
   .page__title {
     font-family: "Oranienbaum", "Cambria", "Hoefler Text", Utopia,
       "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman",
