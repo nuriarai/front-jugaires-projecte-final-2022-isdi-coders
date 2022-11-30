@@ -10,9 +10,12 @@ describe("Given a Login page", () => {
 
       renderWithProviders(<LoginPage />);
 
-      const heading = screen.queryByRole("heading", { level: 1 });
+      const heading = screen.queryByRole("heading", {
+        level: 1,
+        name: headingText,
+      });
 
-      expect(heading).toHaveTextContent(headingText);
+      expect(heading).toBeInTheDocument();
     });
   });
 });
