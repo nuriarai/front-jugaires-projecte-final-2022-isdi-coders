@@ -1,12 +1,16 @@
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
-import { showModalActionCreator } from "../redux/features/uiSlice";
+import {
+  hideLoadingActionCreator,
+  showLoadingActionCreator,
+  showModalActionCreator,
+} from "../redux/features/uiSlice";
 import {
   loginUserActionCreator,
   logoutUserActionCreator,
 } from "../redux/features/userSlice/userSlice";
 import { useAppDispatch } from "../redux/hooks";
-
+import useToken from "./useToken/useToken";
 import { UserCredentialsData, UserRegisterData } from "../types/types";
 import decodeToken from "../utils/decodeToken";
 import { AxiosResponse, JwtCustomPayload } from "./types";
@@ -15,11 +19,15 @@ const apiUrl = process.env.REACT_APP_API;
 
 const useUser = () => {
   const dispatch = useAppDispatch();
+  const { deleteToken } = useToken();
   const navigate = useNavigate();
 
   const userRegister = async (registerData: UserRegisterData) => {
     try {
+      dispatch(showLoadingActionCreator());
+
       await axios.post(`${apiUrl}/users/register`, registerData);
+
       dispatch(
         showModalActionCreator({
           modalType: "success",
@@ -27,8 +35,13 @@ const useUser = () => {
             "T'has registrat correctament. Ara entra amb les teves credencials",
         })
       );
+
+      dispatch(hideLoadingActionCreator());
+
       navigate("/login");
     } catch (error: unknown) {
+      dispatch(hideLoadingActionCreator());
+
       dispatch(
         showModalActionCreator({
           modalType: "error",
@@ -40,6 +53,8 @@ const useUser = () => {
 
   const userLogin = async (loginData: UserCredentialsData) => {
     try {
+      dispatch(showLoadingActionCreator());
+
       const response = await axios.post(`${apiUrl}/users/login`, loginData);
 
       const { token } = await response.data;
@@ -52,9 +67,14 @@ const useUser = () => {
           token,
         })
       );
+      dispatch(hideLoadingActionCreator());
+
       navigate("/partides");
+
       localStorage.setItem("token", token);
     } catch (error: unknown) {
+      dispatch(hideLoadingActionCreator());
+
       dispatch(
         showModalActionCreator({
           modalType: "error",
@@ -65,7 +85,7 @@ const useUser = () => {
   };
 
   const userLogout = () => {
-    window.localStorage.removeItem("token");
+    deleteToken();
 
     dispatch(logoutUserActionCreator());
   };
