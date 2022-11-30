@@ -63,7 +63,8 @@
     "collectCoverageFrom": [
       "!src/index.tsx",
       "!src/setupTests.ts",
-      "!src/react-app-env.d.ts"
+      "!src/react-app-env.d.ts",
+      "!src/styles/GlobalStyles.tsx"
     ]
   }
 }
