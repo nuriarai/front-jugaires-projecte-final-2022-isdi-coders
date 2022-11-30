@@ -46,4 +46,24 @@ describe("Given an input/label component", () => {
       expect(inputLabelComponent).toBeInTheDocument();
     });
   });
+
+  describe("When it receives a label 'Usuari' and no receives any inputType", () => {
+    test("Then it should show a label with text 'Usuari' on it and an input type 'text'", () => {
+      const labelText = "Contrasenya:";
+
+      renderWithProviders(
+        <InputLabel
+          labelText="Contrasenya"
+          inputId="password"
+          wrapperClassName="wrapper"
+          inputChangeAction={jest.fn}
+          inputValue=""
+        />
+      );
+
+      const inputLabelComponent = screen.queryByLabelText(labelText);
+
+      expect(inputLabelComponent).toBeInTheDocument();
+    });
+  });
 });

@@ -7,7 +7,7 @@ interface ButtonProps {
   isDisabled?: boolean;
   isReversed?: boolean;
   ariaLabel?: string;
-  semantic: "button" | "icon";
+  semantic?: "button" | "icon";
 }
 
 const Button = ({
