@@ -1,12 +1,17 @@
-import { renderHook } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 import { UserCredentialsData, UserRegisterData } from "../types/types";
 import ProviderWrapper from "../utils/testUtils/ProviderWrapper";
 import { showModalActionCreator } from "../redux/features/uiSlice";
 import { ShowModalActionPayload } from "../redux/features/types";
 import { store } from "../redux/store";
 import useUser from "./useUser";
-import { loginUserActionCreator } from "../redux/features/userSlice/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../redux/features/userSlice/userSlice";
 import { JwtCustomPayload } from "./types";
+import * as router from "react-router";
+import { act } from "react-dom/test-utils";
 
 const dispatchSpy = jest.spyOn(store, "dispatch");
 
@@ -14,17 +19,30 @@ jest.mock("jwt-decode", () => {
   return () => ({ id: "adminId", username: "admin" } as JwtCustomPayload);
 });
 
-describe("Given a useUser custom hook", () => {
-  const {
-    result: {
-      current: { userRegister },
-    },
-  } = renderHook(() => useUser(), {
-    wrapper: ProviderWrapper,
-  });
+const mockNavigate = jest.fn();
 
+const mockRemoveToken = jest.fn();
+jest.mock("./useToken/useToken", () => {
+  return () => ({
+    deleteToken: mockRemoveToken,
+  });
+});
+
+beforeEach(() => {
+  jest.spyOn(router, "useNavigate").mockImplementation(() => mockNavigate);
+});
+
+describe("Given a useUser custom hook", () => {
   describe("When its method userRegister is invoked with username 'maria23', password 'maria23' and email 'maria23@maria.com'", () => {
     test("Then it should invoke dispatch with showModalActionCreator with type 'success' and text 'T'has registrat correctament. Benvingut/da a Jugaires!'", async () => {
+      const {
+        result: {
+          current: { userRegister },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
       const newUser: UserRegisterData = {
         username: "maria47",
         password: "maria47",
@@ -36,16 +54,44 @@ describe("Given a useUser custom hook", () => {
           "T'has registrat correctament. Ara entra amb les teves credencials",
       };
 
-      await userRegister(newUser);
-
-      expect(dispatchSpy).toHaveBeenCalledWith(
-        showModalActionCreator(modalPayload)
+      await act(async () => await userRegister(newUser));
+      await waitFor(() =>
+        expect(dispatchSpy).toHaveBeenCalledWith(
+          showModalActionCreator(modalPayload)
+        )
       );
+    });
+
+    test("Then the navigation to page login should to be called", async () => {
+      const {
+        result: {
+          current: { userRegister },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const newUser: UserRegisterData = {
+        username: "maria47",
+        password: "maria47",
+        email: "maria47@maria.com",
+      };
+
+      await act(async () => await userRegister(newUser));
+      await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/login"));
     });
   });
 
   describe("When its method registerUser is invoked with username 'registeredAdmin'", () => {
     test("Then it should invoke dispatch with showModalAction creator with text 'This username is already registered'", async () => {
+      const {
+        result: {
+          current: { userRegister },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
       const newUser: UserRegisterData = {
         username: "registeredUser",
         password: "",
@@ -56,10 +102,12 @@ describe("Given a useUser custom hook", () => {
         message: "Aquest usuari ja està registrat",
       };
 
-      await userRegister(newUser);
+      await act(async () => await userRegister(newUser));
 
-      expect(dispatchSpy).toHaveBeenCalledWith(
-        showModalActionCreator(modalPayload)
+      await waitFor(() =>
+        expect(dispatchSpy).toHaveBeenCalledWith(
+          showModalActionCreator(modalPayload)
+        )
       );
     });
   });
@@ -83,10 +131,33 @@ describe("Given a useUser custom hook", () => {
         token: "adminToken",
       };
 
-      await userLogin(user);
+      await act(async () => await userLogin(user));
 
-      expect(dispatchSpy).toHaveBeenCalledWith(
-        loginUserActionCreator(loginActionPayload)
+      await waitFor(() =>
+        expect(dispatchSpy).toHaveBeenCalledWith(
+          loginUserActionCreator(loginActionPayload)
+        )
+      );
+    });
+
+    test("Then the navigation to page 'Partides' should to be called", async () => {
+      const {
+        result: {
+          current: { userLogin },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const user: UserCredentialsData = {
+        username: "admin",
+        password: "adminadmin",
+      };
+
+      await act(async () => await userLogin(user));
+
+      await waitFor(() =>
+        expect(mockNavigate).toHaveBeenCalledWith("/partides")
       );
     });
   });
@@ -109,11 +180,26 @@ describe("Given a useUser custom hook", () => {
         message: "Usuari o password incorrecte",
       };
 
-      await userLogin(user);
+      await act(async () => await userLogin(user));
 
-      expect(dispatchSpy).toHaveBeenCalledWith(
-        showModalActionCreator(modalPayload)
+      await waitFor(() =>
+        expect(dispatchSpy).toHaveBeenCalledWith(
+          showModalActionCreator(modalPayload)
+        )
       );
+    });
+  });
+
+  describe("When its method logoutUser is invoked", () => {
+    test("Then deleteToken first and dispatch after should be called with 'userLogoutActionCreator'", () => {
+      const { result } = renderHook(() => useUser(), {
+        wrapper: ProviderWrapper,
+      });
+
+      result.current.userLogout();
+
+      expect(mockRemoveToken).toHaveBeenCalled();
+      expect(dispatchSpy).toBeCalledWith(logoutUserActionCreator());
     });
   });
 });
