@@ -21,5 +21,18 @@ describe("Given a Button component", () => {
       expect(renderedButton).toBeInTheDocument();
       expect(buttonAction).toHaveBeenCalled();
     });
+
+    describe("When it is rendered with no semantic type and an action", () => {
+      test("Then it should has the default type 'button'", async () => {
+        const buttonText = "Login";
+        const buttonAction = jest.fn();
+
+        renderWithProviders(<Button text={buttonText} action={buttonAction} />);
+
+        const renderedButton = screen.queryByRole("button");
+
+        expect(renderedButton).toBeInTheDocument();
+      });
+    });
   });
 });
