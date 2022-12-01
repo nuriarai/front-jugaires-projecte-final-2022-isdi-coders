@@ -3,7 +3,6 @@ import { UserCredentialsData, UserRegisterData } from "../types/types";
 import ProviderWrapper from "../utils/testUtils/ProviderWrapper";
 import { showModalActionCreator } from "../redux/features/uiSlice";
 import { ShowModalActionPayload } from "../redux/features/types";
-import { store } from "../redux/store";
 import useUser from "./useUser";
 import {
   loginUserActionCreator,
@@ -12,8 +11,9 @@ import {
 import { JwtCustomPayload } from "./types";
 import * as router from "react-router";
 import { act } from "react-dom/test-utils";
+import mockInitialStore from "../mooks/mockInitialStore";
 
-const dispatchSpy = jest.spyOn(store, "dispatch");
+const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 
 jest.mock("jwt-decode", () => {
   return () => ({ id: "adminId", username: "admin" } as JwtCustomPayload);
@@ -54,11 +54,9 @@ describe("Given a useUser custom hook", () => {
           "T'has registrat correctament. Ara entra amb les teves credencials",
       };
 
-      await act(async () => await userRegister(newUser));
-      await waitFor(() =>
-        expect(dispatchSpy).toHaveBeenCalledWith(
-          showModalActionCreator(modalPayload)
-        )
+      await userRegister(newUser);
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        showModalActionCreator(modalPayload)
       );
     });
 

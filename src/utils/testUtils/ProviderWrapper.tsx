@@ -1,9 +1,9 @@
 import { Provider } from "react-redux";
-import { store } from "../../redux/store";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../../styles/mainTheme";
 import GlobalStyles from "../../styles/GlobalStyles";
 import { BrowserRouter } from "react-router-dom";
+import mockInitialStore from "../../mooks/mockInitialStore";
 
 interface ProviderWrapperProps {
   children: JSX.Element | JSX.Element[];
@@ -12,7 +12,7 @@ interface ProviderWrapperProps {
 const ProviderWrapper = ({ children }: ProviderWrapperProps) => {
   return (
     <BrowserRouter>
-      <Provider store={store}>
+      <Provider store={mockInitialStore}>
         <ThemeProvider theme={mainTheme}>
           <GlobalStyles />
           {children}
