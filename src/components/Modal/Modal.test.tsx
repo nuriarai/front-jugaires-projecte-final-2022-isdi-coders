@@ -5,6 +5,7 @@ import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import Modal from "./Modal";
 import { hideModalActionCreator } from "../../redux/features/uiSlice";
 import mockUserState from "../../mooks/mockUserState";
+import { mockInitialGameState } from "../../mooks/mocksGames";
 
 const mockDispatch = jest.fn();
 
@@ -23,7 +24,11 @@ describe("Given a Modal component", () => {
       const { container } = renderWithProviders(
         <Modal message={modalMessage} modalType={modalType} />,
         {
-          preloadedState: { ui: mockUiState, user: mockUserState },
+          preloadedState: {
+            ui: mockUiState,
+            user: mockUserState,
+            game: mockInitialGameState,
+          },
         }
       );
 
@@ -44,7 +49,11 @@ describe("Given a Modal component", () => {
       const { container } = renderWithProviders(
         <Modal message={modalMessage} modalType={modalType} />,
         {
-          preloadedState: { ui: mockUiState, user: mockUserState },
+          preloadedState: {
+            ui: mockUiState,
+            user: mockUserState,
+            game: mockInitialGameState,
+          },
         }
       );
 
@@ -68,7 +77,11 @@ describe("Given a Modal component", () => {
       renderWithProviders(
         <Modal message={modalMessage} modalType={modalType} />,
         {
-          preloadedState: { ui: mockUiState, user: mockUserState },
+          preloadedState: {
+            ui: mockUiState,
+            user: mockUserState,
+            game: mockInitialGameState,
+          },
         }
       );
 
