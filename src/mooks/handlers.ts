@@ -1,5 +1,6 @@
 import { rest } from "msw";
 import { UserCredentialsData, UserRegisterData } from "../types/types";
+import { mockGamesList } from "./mocksGames";
 
 const urlApi = process.env.REACT_APP_API;
 
@@ -30,6 +31,17 @@ const handlers = [
     }
 
     return res(ctx.status(201), ctx.json({ token: "adminToken" }));
+  }),
+
+  rest.get(`${urlApi}/partides`, async (req, res, ctx) => {
+    return res.once(ctx.status(200), ctx.json(mockGamesList));
+  }),
+
+  rest.get(`${urlApi}/partides`, async (req, res, ctx) => {
+    return res.once(
+      ctx.status(500),
+      ctx.json({ error: "No s'ha pogut carregar el llistat de partides" })
+    );
   }),
 ];
 
