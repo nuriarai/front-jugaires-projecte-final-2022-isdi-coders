@@ -10,6 +10,7 @@ import { RootState, store } from "../../redux/store";
 import { InitialEntry } from "@remix-run/router";
 import mainTheme from "../../styles/mainTheme";
 import GlobalStyles from "../../styles/GlobalStyles";
+import { gamesReducer } from "../../redux/features/gamesSlice/gamesSlice";
 
 interface ExtendedRenderOptions extends RenderOptions {
   preloadedState?: PreloadedState<RootState>;
@@ -39,7 +40,7 @@ const renderWithProviders = (
     preloadedState,
     initialEntries,
     store = configureStore({
-      reducer: { ui: uiReducer, user: userReducer },
+      reducer: { ui: uiReducer, user: userReducer, game: gamesReducer },
       preloadedState,
     }),
     ...renderOptions
