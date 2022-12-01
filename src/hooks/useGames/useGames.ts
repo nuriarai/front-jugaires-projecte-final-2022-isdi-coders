@@ -17,7 +17,7 @@ const useGame = () => {
   const loadGames = useCallback(async () => {
     try {
       dispatch(showLoadingActionCreator());
-      const response = await axios.get(`${apiUrl}/partides`);
+      const response = await axios.get(`${apiUrl}/games/games`);
 
       dispatch(loadGamesActionCreator(response.data.games));
       dispatch(hideLoadingActionCreator());

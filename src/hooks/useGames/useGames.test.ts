@@ -3,7 +3,7 @@ import mockInitialStore from "../../mooks/mockInitialStore";
 import { ShowModalActionPayload } from "../../redux/features/types";
 import { showModalActionCreator } from "../../redux/features/uiSlice";
 import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
-import useGame from "./useGame";
+import useGame from "./useGames";
 
 const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 

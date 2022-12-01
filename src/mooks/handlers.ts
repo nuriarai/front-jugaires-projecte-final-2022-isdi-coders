@@ -33,11 +33,11 @@ const handlers = [
     return res(ctx.status(201), ctx.json({ token: "adminToken" }));
   }),
 
-  rest.get(`${urlApi}/partides`, async (req, res, ctx) => {
+  rest.get(`${urlApi}/games/games`, async (req, res, ctx) => {
     return res.once(ctx.status(200), ctx.json(mockGamesList));
   }),
 
-  rest.get(`${urlApi}/partides`, async (req, res, ctx) => {
+  rest.get(`${urlApi}/games/games`, async (req, res, ctx) => {
     return res.once(
       ctx.status(500),
       ctx.json({ error: "No s'ha pogut carregar el llistat de partides" })
