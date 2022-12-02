@@ -7,4 +7,11 @@ const mockUserState: UserState = {
   username: "",
 };
 
+export const mockUserStateIsLogged: UserState = {
+  id: "",
+  isLogged: true,
+  token: "",
+  username: "Aina",
+};
+
 export default mockUserState;
