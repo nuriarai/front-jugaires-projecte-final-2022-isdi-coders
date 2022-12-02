@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useGame from "../../hooks/useGames/useGames";
 import { useAppSelector } from "../../redux/hooks";
+import GameCard from "../GameCard/GameCard";
 import GamesListStyled from "./GamesListStyled";
 
 const GamesList = (): JSX.Element => {
@@ -14,7 +15,9 @@ const GamesList = (): JSX.Element => {
   return (
     <GamesListStyled>
       {games.map((game) => (
-        <li key={game.id}>{game.gameBoard}</li>
+        <li key={game.id}>
+          <GameCard gameData={game} />
+        </li>
       ))}
     </GamesListStyled>
   );

@@ -17,5 +17,7 @@ const gamesFactory = Factory.define<Game>(() => ({
   observations: faker.lorem.lines(2),
 }));
 
+export const getRandomGame = () => gamesFactory.build();
+
 export const getRandomGames = (number: number) =>
   gamesFactory.buildList(number);

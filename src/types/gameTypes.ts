@@ -8,6 +8,7 @@ export interface Game {
   location: string;
   addressLocation: string;
   minPlayers: number;
+  maxPlayers: number;
   duration: string;
   observations: string;
 }

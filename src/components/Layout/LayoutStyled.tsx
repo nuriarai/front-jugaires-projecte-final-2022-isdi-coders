@@ -9,13 +9,13 @@ const LayoutStyled = styled.div`
     font-size: ${(props) => props.theme.fontSizes.headerMobile};
     color: ${(props) => props.theme.colors.primary.light};
     text-align: center;
-    margin: 30px 0 60px;
+    margin: 0 0 30px;
   }
 
   @media screen and (min-width: ${(props) => props.theme.mediaSizes.medium}) {
     .page__title {
       font-size: ${(props) => props.theme.fontSizes.header};
-      margin-bottom: 70px;
+      margin: 15px 0 50px;
     }
   }
 
