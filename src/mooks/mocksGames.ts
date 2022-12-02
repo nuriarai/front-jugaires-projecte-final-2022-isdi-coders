@@ -8,3 +8,7 @@ export const mockGamesList = getRandomGames(2);
 export const mockInitialGameState: GamesState = {
   list: [],
 };
+
+export const gamesListOfFive: GamesState = {
+  list: mockGamesListOfFive,
+};

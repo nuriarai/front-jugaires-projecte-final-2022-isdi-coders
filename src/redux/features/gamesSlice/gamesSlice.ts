@@ -16,9 +16,20 @@ const gamesSlice = createSlice({
       ...currentGameState,
       list: [...action.payload],
     }),
+
+    deleteGame: (
+      currentGameState,
+      action: PayloadAction<string>
+    ): GamesState => ({
+      ...currentGameState,
+      list: currentGameState.list.filter((game) => game.id !== action.payload),
+    }),
   },
 });
 
 export const gamesReducer = gamesSlice.reducer;
 
-export const { loadGames: loadGamesActionCreator } = gamesSlice.actions;
+export const {
+  loadGames: loadGamesActionCreator,
+  deleteGame: deleteGameActionCreator,
+} = gamesSlice.actions;
