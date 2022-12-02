@@ -64,9 +64,8 @@ const RegisterForm = (): JSX.Element => {
           inputValue={formData.email}
         />
         <Button
-          className="button button--access button--register"
+          className="button--button"
           text="Registra't"
-          semantic="button"
           isReversed
           action={() => {}}
         />

@@ -54,9 +54,8 @@ const LoginForm = (): JSX.Element => {
           inputChangeAction={handleFormChange}
         />
         <Button
-          className="button button--access button--register"
+          className="button--button"
           text="Entra"
-          semantic="button"
           isReversed
           action={() => {}}
         />
