@@ -64,7 +64,6 @@ const Navigation = (): JSX.Element => {
               text="Sortir"
               action={logoutHandler}
               className="button--logout"
-              semantic="button"
             ></Button>
           </li>
         </ul>
