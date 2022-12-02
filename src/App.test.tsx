@@ -1,9 +1,9 @@
 import { screen } from "@testing-library/react";
-import App from "./App";
-import { mockInitialGameState } from "./mooks/mocksGames";
-import mockUiState, { mockUiStateOpen } from "./mooks/mockUiState";
-import { mockUserStateIsLogged } from "./mooks/mockUserState";
 import renderWithProviders from "./utils/testUtils/renderWithProviders";
+import { mockInitialGameState } from "./mooks/mocksGames";
+import { mockUiStateOpen } from "./mooks/mockUiState";
+import { mockUserStateIsLogged } from "./mooks/mockUserState";
+import App from "./App";
 
 describe("Given an App component", () => {
   describe("When is rendered and loading is true", () => {
