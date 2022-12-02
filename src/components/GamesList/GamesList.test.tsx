@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import { mockGamesList } from "../../mooks/mocksGames";
+import { store } from "../../redux/store";
 import mockUiState from "../../mooks/mockUiState";
 import mockUserState from "../../mooks/mockUserState";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
@@ -29,6 +30,14 @@ describe("Given a list of games component", () => {
       const gamesList = screen.queryAllByRole("listitem");
 
       expect(gamesList).toHaveLength(numExpectedGames);
+    });
+
+    test("Then it should call the action", () => {
+      renderWithProviders(<GamesList />, {
+        store: store,
+      });
+
+      expect(mockLoadGames).toHaveBeenCalled();
     });
   });
 });

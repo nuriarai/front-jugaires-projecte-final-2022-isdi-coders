@@ -9,4 +9,13 @@ const mockUiState: UiState = {
   },
 };
 
+export const mockUiStateOpen: UiState = {
+  isLoading: true,
+  modal: {
+    isOpen: true,
+    message: "",
+    modalType: "success",
+  },
+};
+
 export default mockUiState;
