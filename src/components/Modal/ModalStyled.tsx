@@ -29,28 +29,28 @@ const ModalStyled = styled.div`
     &.modal--error {
       border: 2px solid ${(props) => props.theme.colors.error.base};
       border-top-width: 30px;
-      .button__icon {
+      .button--icon {
         border: 2px solid ${(props) => props.theme.colors.error.base};
       }
     }
     &.modal--success {
       border: 2px solid ${(props) => props.theme.colors.success.base};
       border-top-width: 30px;
-      .button__icon {
+      .button--icon {
         border: 2px solid ${(props) => props.theme.colors.success.base};
       }
     }
     &.modal--info {
       border: 2px solid ${(props) => props.theme.colors.info.base};
       border-top-width: 30px;
-      .button__icon {
+      .button--icon {
         border: 2px solid ${(props) => props.theme.colors.info.base};
       }
     }
     &.modal--alert {
       border: 2px solid ${(props) => props.theme.colors.alert.base};
       border-top-width: 30px;
-      .button__icon {
+      .button--icon {
         border: 2px solid ${(props) => props.theme.colors.alert.base};
       }
     }
@@ -60,7 +60,7 @@ const ModalStyled = styled.div`
       font-weight: bold;
       text-align: center;
     }
-    .button__icon {
+    .button--icon {
       position: absolute;
       top: -42px;
       right: -25px;

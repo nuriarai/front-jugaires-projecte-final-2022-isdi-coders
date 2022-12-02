@@ -9,9 +9,7 @@ describe("Given a Button component", () => {
       const buttonText = "Register";
       const buttonAction = jest.fn();
 
-      renderWithProviders(
-        <Button text={buttonText} action={buttonAction} semantic={"button"} />
-      );
+      renderWithProviders(<Button text={buttonText} action={buttonAction} />);
 
       const renderedButton = screen.queryByRole("button", {
         name: buttonText,

@@ -16,8 +16,7 @@ const Modal = ({ modalType, message }: ModalProps): JSX.Element => {
         <p>{message}</p>
         <Button
           ariaLabel="close"
-          className="button__icon"
-          semantic="icon"
+          className="button--icon"
           action={() => dispatch(hideModalActionCreator())}
         />
       </div>
