@@ -75,6 +75,7 @@ const NavigationStyled = styled.div`
     &.opened {
       right: 0px;
       transition: right linear 0.2s;
+      z-index: 1;
     }
 
     .visible {
