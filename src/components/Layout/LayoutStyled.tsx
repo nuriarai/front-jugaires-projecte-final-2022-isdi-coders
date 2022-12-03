@@ -30,7 +30,7 @@ const LayoutStyled = styled.div`
   }
 
   .container {
-    padding: 20px;
+    padding: 20px 30px;
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
