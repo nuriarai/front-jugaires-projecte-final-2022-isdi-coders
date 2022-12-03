@@ -1,8 +1,17 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { getRandomGame } from "../../factories/gameFactory";
+import { mockGamesListOfFive } from "../../mooks/mocksGames";
 import { Game } from "../../types/gameTypes";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import GameCard from "./GameCard";
+
+const mockDelete = jest.fn();
+jest.mock("../../hooks/useGames/useGames.ts", () => {
+  return () => ({
+    deleteGame: mockDelete,
+  });
+});
 
 describe("Given a Game card component", () => {
   describe("When is rendered", () => {
@@ -17,6 +26,22 @@ describe("Given a Game card component", () => {
       });
 
       expect(heading).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's remove item button it's clicked", () => {
+    test("Then it should show a modal with", async () => {
+      let gameData: Game = mockGamesListOfFive[0];
+      const expectedAriaButtonDelete = "esborrar partida";
+
+      renderWithProviders(<GameCard gameData={gameData} />);
+
+      const expectedDeleteButton = screen.queryByLabelText(
+        expectedAriaButtonDelete
+      );
+
+      await userEvent.click(expectedDeleteButton!);
+      expect(mockDelete).toHaveBeenCalledWith(gameData.id);
     });
   });
 });
