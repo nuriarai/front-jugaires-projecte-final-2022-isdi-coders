@@ -7,6 +7,7 @@ const ModalStyled = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: 4;
   background-color: rgba(115, 119, 196, 0.7);
 
   .modal {
@@ -20,6 +21,7 @@ const ModalStyled = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 5;
     display: grid;
     place-items: center;
     @media screen and (min-width: ${(props) => props.theme.mediaSizes.medium}) {
