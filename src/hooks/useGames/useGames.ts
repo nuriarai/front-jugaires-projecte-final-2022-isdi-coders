@@ -10,6 +10,7 @@ import {
   showModalActionCreator,
 } from "../../redux/features/uiSlice";
 import { useAppDispatch } from "../../redux/hooks";
+import { Game } from "../../types/gameTypes";
 import { AxiosResponse } from "../types";
 
 const apiUrl = process.env.REACT_APP_API;
@@ -63,9 +64,37 @@ const useGame = () => {
     [dispatch]
   );
 
+  const createGame = useCallback(
+    async (gameData: Partial<Game>) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        await axios.post(`${apiUrl}/games/create`, gameData);
+
+        dispatch(hideLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            modalType: "success",
+            message: "S'ha creat la nova partida.",
+          })
+        );
+      } catch (error: unknown) {
+        dispatch(hideLoadingActionCreator());
+
+        dispatch(
+          showModalActionCreator({
+            modalType: "error",
+            message: (error as AxiosError<AxiosResponse>).response?.data.error!,
+          })
+        );
+      }
+    },
+    [dispatch]
+  );
+
   return {
     loadGames,
     deleteGame,
+    createGame,
   };
 };
 export default useGame;
