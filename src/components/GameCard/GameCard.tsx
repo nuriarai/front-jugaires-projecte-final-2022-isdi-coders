@@ -3,6 +3,7 @@ import GameCardStyled from "./GameCardStyled";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import { FiInfo, FiEdit, FiTrash2 } from "react-icons/fi";
+import useGame from "../../hooks/useGames/useGames";
 
 interface GameCardProps {
   gameData: Game;
@@ -25,6 +26,16 @@ const GameCard = ({
   },
 }: GameCardProps): JSX.Element => {
   const newDate = Date.parse(dateTime);
+  const { deleteGame } = useGame();
+
+  const handleDelete = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    deleteGame(id);
+  };
 
   return (
     <GameCardStyled className="game-card">
@@ -50,8 +61,17 @@ const GameCard = ({
       </div>
       <div className="game__content">
         <div className="game__icons">
-          <Button className="button--icon-card" children={<FiEdit />} />
-          <Button className="button--icon-card" children={<FiTrash2 />} />
+          <Button
+            ariaLabel="editar partida"
+            className="button--icon-card"
+            children={<FiEdit />}
+          />
+          <Button
+            ariaLabel="esborrar partida"
+            className="button--icon-card button--remove"
+            children={<FiTrash2 />}
+            action={handleDelete}
+          />
         </div>
         <h2>{gameBoard}</h2>
         <span className="game__date">{newDate}</span>
