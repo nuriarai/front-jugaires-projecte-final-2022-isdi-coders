@@ -1,6 +1,9 @@
 import axios, { AxiosError } from "axios";
 import { useCallback } from "react";
-import { loadGamesActionCreator } from "../../redux/features/gamesSlice/gamesSlice";
+import {
+  deleteGameActionCreator,
+  loadGamesActionCreator,
+} from "../../redux/features/gamesSlice/gamesSlice";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
@@ -33,8 +36,36 @@ const useGame = () => {
     }
   }, [dispatch]);
 
+  const deleteGame = useCallback(
+    async (id: string) => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        await axios.delete(`${apiUrl}/games/delete/${id}`);
+        dispatch(deleteGameActionCreator(id));
+        dispatch(hideLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            modalType: "success",
+            message: "El missatge s'ha esborrat correctament",
+          })
+        );
+      } catch (error: unknown) {
+        dispatch(hideLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            modalType: "error",
+            message: (error as AxiosError<AxiosResponse>).response?.data.error!,
+          })
+        );
+      }
+    },
+    [dispatch]
+  );
+
   return {
     loadGames,
+    deleteGame,
   };
 };
 export default useGame;
