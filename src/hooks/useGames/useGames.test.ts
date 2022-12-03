@@ -11,6 +11,7 @@ const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 beforeEach(() => {
   jest.clearAllMocks();
 });
+const mockOfOne = mockGamesListOfFive[3];
 
 describe("Given the useGame custom hook", () => {
   describe("When its method loadGames is invoked", () => {
@@ -86,6 +87,45 @@ describe("Given the useGame custom hook", () => {
         };
 
         await deleteGame(id);
+
+        expect(dispatchSpy).toHaveBeenCalledWith(
+          showModalActionCreator(modalPayload)
+        );
+      });
+    });
+  });
+
+  describe("When its method createGame is invoked", () => {
+    describe("and there is no errors", () => {
+      test("Then it should invoke dispatch with createGame action creator and a list of 5 games", async () => {
+        const {
+          result: {
+            current: { createGame },
+          },
+        } = renderHook(() => useGame(), {
+          wrapper: ProviderWrapper,
+        });
+
+        await createGame(mockOfOne);
+
+        expect(dispatchSpy).toHaveBeenCalled();
+      });
+    });
+
+    describe("and Axios retunr an errors", () => {
+      test("Then it should invoke dispatch with createGame action creator and a list of 5 games", async () => {
+        const {
+          result: {
+            current: { createGame },
+          },
+        } = renderHook(() => useGame(), {
+          wrapper: ProviderWrapper,
+        });
+        const modalPayload: ShowModalActionPayload = {
+          modalType: "error",
+          message: "No s'ha pogut crear la partida.",
+        };
+        await createGame(mockOfOne);
 
         expect(dispatchSpy).toHaveBeenCalledWith(
           showModalActionCreator(modalPayload)
