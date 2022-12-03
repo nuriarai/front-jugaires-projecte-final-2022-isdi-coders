@@ -1,11 +1,12 @@
 import { rest } from "msw";
 import { UserCredentialsData, UserRegisterData } from "../types/types";
-import { mockGamesList } from "./mocksGames";
-import { mockGamesListOfFive } from "./mocksGames";
+import { mockGamesList, mockGamesListOfFive } from "./mocksGames";
 
 const urlApi = process.env.REACT_APP_API;
 
 const { id } = mockGamesListOfFive[0];
+
+const mockOfOne = mockGamesListOfFive[3];
 
 const handlers = [
   rest.post(`${urlApi}/users/register`, async (req, res, ctx) => {
@@ -55,6 +56,17 @@ const handlers = [
     return res.once(
       ctx.status(500),
       ctx.json({ error: "No s'ha pogut esborrar la partida" })
+    );
+  }),
+
+  rest.post(`${urlApi}/games/create`, async (req, res, ctx) => {
+    return res.once(ctx.status(201), ctx.json({ mockOfOne }));
+  }),
+
+  rest.post(`${urlApi}/games/create`, async (req, res, ctx) => {
+    return res.once(
+      ctx.status(500),
+      ctx.json({ error: "No s'ha pogut crear la partida." })
     );
   }),
 ];
