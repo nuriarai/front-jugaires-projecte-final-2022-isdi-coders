@@ -2,7 +2,7 @@ import { UserRegisterData } from "../../types/types";
 import InputLabel from "../InputLabel/InputLabel";
 import useUser from "../../hooks/useUser";
 import { useState } from "react";
-import AccessFormStyled from "../StyledComponents/AccessFormStyled";
+import AllFormsStyled from "../../styles/formStyles";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 import cartes from "../../assets/icons/cartes.svg";
@@ -36,7 +36,7 @@ const RegisterForm = (): JSX.Element => {
   };
 
   return (
-    <AccessFormStyled>
+    <AllFormsStyled>
       <form
         className="access access--register"
         onSubmit={(event) => handleSubmit(event)}
@@ -82,7 +82,7 @@ const RegisterForm = (): JSX.Element => {
         src={cartes}
         alt="perfil d'unes cartes a la ma"
       />
-    </AccessFormStyled>
+    </AllFormsStyled>
   );
 };
 
