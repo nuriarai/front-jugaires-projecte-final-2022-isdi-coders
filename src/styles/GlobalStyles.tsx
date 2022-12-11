@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
-*:where(:not(html, iframe, canvas, img, svg, video, audio, h1, h2, h3, h4, h5, p):not(svg *, symbol *)) {
+*:where(:not(html, iframe, select, input, canvas, img, svg, video, audio, h1, h2, h3, h4, h5, p):not(svg *, symbol *)) {
   all: unset;
   display: revert;
 }
