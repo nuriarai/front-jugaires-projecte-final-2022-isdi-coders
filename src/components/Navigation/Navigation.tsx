@@ -39,7 +39,11 @@ const Navigation = (): JSX.Element => {
               Partides
             </NavLink>
           </li>
-          <li>Jocs</li>
+          <li>
+            <NavLink to="/nova-partida" onClick={menuHandler}>
+              Crear nova partida
+            </NavLink>
+          </li>
           <li>Contacte</li>
           <li className={isLogged ? "hidden" : "visible"}>
             <NavLink
