@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   deleteGameActionCreator,
   loadGamesActionCreator,
@@ -17,6 +18,7 @@ const apiUrl = process.env.REACT_APP_API;
 
 const useGame = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const loadGames = useCallback(async () => {
     try {
@@ -71,6 +73,8 @@ const useGame = () => {
         await axios.post(`${apiUrl}/games/create`, gameData);
 
         dispatch(hideLoadingActionCreator());
+
+        navigate("/partides");
         dispatch(
           showModalActionCreator({
             modalType: "success",
@@ -88,7 +92,7 @@ const useGame = () => {
         );
       }
     },
-    [dispatch]
+    [dispatch, navigate]
   );
 
   return {
