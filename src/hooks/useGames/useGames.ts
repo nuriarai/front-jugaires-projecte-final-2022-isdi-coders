@@ -92,7 +92,7 @@ const useGame = () => {
         );
       }
     },
-    [dispatch]
+    [dispatch, navigate]
   );
 
   return {
