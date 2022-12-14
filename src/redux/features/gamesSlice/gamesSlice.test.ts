@@ -1,10 +1,14 @@
 import {
   gamesListOfFive,
+  mockGameEmpty,
   mockGamesListOfFive,
+  mockOneGame,
 } from "../../../mooks/mocksGames";
+import { GamesState } from "../../../types/gameTypes";
 import {
   deleteGameActionCreator,
   gamesReducer,
+  getGameByIdActionCreator,
   loadGamesActionCreator,
 } from "./gamesSlice";
 
@@ -21,8 +25,9 @@ describe("Given a function gamesReducer", () => {
       expect(newGameState.list).toStrictEqual([]);
     });
   });
-  describe("When the loadGamesActionCreator is invoked with an empty current state and two games", () => {
-    test("Then it should return a new state with two games", () => {
+
+  describe("When the loadGamesActionCreator is invoked with an empty current state and five games", () => {
+    test("Then it should return a new state with five games", () => {
       const currentEmptyState = {
         list: [],
       };
@@ -50,6 +55,22 @@ describe("Given a function gamesReducer", () => {
       );
 
       expect(newState).toStrictEqual(expectedGamesState);
+    });
+  });
+
+  describe("When the getGameByIdActionCreator is invoked with a correct id", () => {
+    test("Then it should return a new state with the data of this id", () => {
+      const currentEmptyState: GamesState = {
+        list: [],
+        currentGame: mockGameEmpty,
+      };
+      const expectedGamesState = { list: [], currentGame: mockOneGame[0] };
+
+      const getGameById = getGameByIdActionCreator(mockOneGame[0]!);
+
+      const newGameState = gamesReducer(currentEmptyState, getGameById);
+
+      expect(newGameState).toStrictEqual(expectedGamesState);
     });
   });
 });

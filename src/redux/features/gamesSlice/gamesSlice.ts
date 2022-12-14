@@ -3,6 +3,7 @@ import { Game, GamesState } from "../../../types/gameTypes";
 
 const gamesInitialState: GamesState = {
   list: [],
+  currentGame: {} as Game,
 };
 
 const gamesSlice = createSlice({
@@ -24,6 +25,14 @@ const gamesSlice = createSlice({
       ...currentGameState,
       list: currentGameState.list.filter((game) => game.id !== action.payload),
     }),
+
+    getGameById: (
+      currentGameState,
+      action: PayloadAction<Game>
+    ): GamesState => ({
+      ...currentGameState,
+      currentGame: action.payload,
+    }),
   },
 });
 
@@ -32,4 +41,5 @@ export const gamesReducer = gamesSlice.reducer;
 export const {
   loadGames: loadGamesActionCreator,
   deleteGame: deleteGameActionCreator,
+  getGameById: getGameByIdActionCreator,
 } = gamesSlice.actions;

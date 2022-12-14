@@ -30,4 +30,5 @@ export interface GameBase {
 
 export interface GamesState {
   list: Game[];
+  currentGame?: Game;
 }
