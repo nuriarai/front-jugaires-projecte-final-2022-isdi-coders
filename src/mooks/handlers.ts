@@ -69,6 +69,18 @@ const handlers = [
       ctx.json({ error: "No s'ha pogut crear la partida." })
     );
   }),
+
+  rest.get(`${urlApi}/games/game/${mockOfOne.id}`, async (req, res, ctx) => {
+    const game = mockOfOne;
+    return res.once(ctx.status(200), ctx.json({ game }));
+  }),
+
+  rest.get(`${urlApi}/games/game/${mockOfOne.id}`, async (req, res, ctx) => {
+    return res.once(
+      ctx.status(500),
+      ctx.json({ error: "No s'ha trobat aquesta partida" })
+    );
+  }),
 ];
 
 export default handlers;

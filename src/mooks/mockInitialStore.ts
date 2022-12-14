@@ -3,6 +3,7 @@ import { gamesReducer } from "../redux/features/gamesSlice/gamesSlice";
 import { uiReducer } from "../redux/features/uiSlice";
 import { userReducer } from "../redux/features/userSlice/userSlice";
 import { store } from "../redux/store";
+import { mockInitialGameState } from "./mocksGames";
 import mockUiState from "./mockUiState";
 import mockUserState from "./mockUserState";
 
@@ -15,6 +16,7 @@ const mockInitialStore: typeof store = configureStore({
   preloadedState: {
     ui: mockUiState,
     user: mockUserState,
+    game: mockInitialGameState,
   },
 });
 

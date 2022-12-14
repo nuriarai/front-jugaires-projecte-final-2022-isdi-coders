@@ -3,8 +3,10 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   deleteGameActionCreator,
+  getGameByIdActionCreator,
   loadGamesActionCreator,
 } from "../../redux/features/gamesSlice/gamesSlice";
+
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
@@ -95,10 +97,33 @@ const useGame = () => {
     [dispatch, navigate]
   );
 
+  const getGameById = useCallback(
+    async (gameId: string) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const response = await axios.get(`${apiUrl}/games/game/${gameId}`);
+
+        dispatch(getGameByIdActionCreator(response.data.game));
+        dispatch(hideLoadingActionCreator());
+      } catch (error: unknown) {
+        dispatch(hideLoadingActionCreator());
+
+        dispatch(
+          showModalActionCreator({
+            modalType: "error",
+            message: (error as AxiosError<AxiosResponse>).response?.data.error!,
+          })
+        );
+      }
+    },
+    [dispatch]
+  );
+
   return {
     loadGames,
     deleteGame,
     createGame,
+    getGameById,
   };
 };
 export default useGame;
