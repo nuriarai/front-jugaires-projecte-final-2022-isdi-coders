@@ -5,7 +5,11 @@ import { showModalActionCreator } from "../../redux/features/uiSlice";
 import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
 import useGame from "./useGames";
 import { mockGamesListOfFive } from "../../mooks/mocksGames";
-import { deleteGameActionCreator } from "../../redux/features/gamesSlice/gamesSlice";
+import {
+  deleteGameActionCreator,
+  getGameByIdActionCreator,
+} from "../../redux/features/gamesSlice/gamesSlice";
+import { act } from "react-dom/test-utils";
 
 const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 beforeEach(() => {
@@ -32,7 +36,7 @@ describe("Given the useGame custom hook", () => {
     });
 
     describe("and Axios return an error", () => {
-      test("Then dispatch should be called wiht show & hide modal and loading action creators, and modal wiht an error", async () => {
+      test("Then dispatch should be called with show & hide modal and loading action creators, and modal with an error", async () => {
         const {
           result: {
             current: { loadGames },
@@ -72,7 +76,7 @@ describe("Given the useGame custom hook", () => {
     });
 
     describe("and Axios return an error", () => {
-      test("Then dispatch should be called wiht show & hide modal and loading action creators, and modal wiht an error", async () => {
+      test("Then dispatch should be called with show & hide modal and loading action creators, and modal with an error", async () => {
         const { id } = mockGamesListOfFive[0];
         const {
           result: {
@@ -106,14 +110,14 @@ describe("Given the useGame custom hook", () => {
           wrapper: ProviderWrapper,
         });
 
-        await createGame(mockOfOne);
+        await act(async () => createGame(mockOfOne));
 
         expect(dispatchSpy).toHaveBeenCalled();
       });
     });
 
     describe("and Axios retunr an errors", () => {
-      test("Then it should invoke dispatch with createGame action creator and a list of 5 games", async () => {
+      test("Then it should invoke dispatch with createGame action creator and an error", async () => {
         const {
           result: {
             current: { createGame },
@@ -126,6 +130,51 @@ describe("Given the useGame custom hook", () => {
           message: "No s'ha pogut crear la partida.",
         };
         await createGame(mockOfOne);
+
+        expect(dispatchSpy).toHaveBeenCalledWith(
+          showModalActionCreator(modalPayload)
+        );
+      });
+    });
+  });
+
+  describe("When its method getGameById is invoked with an id", () => {
+    describe("and there is no errors", () => {
+      test("Then it should invoke dispatch with getGameById action creator with the game of the received id", async () => {
+        const mockGame = mockGamesListOfFive[3];
+
+        const {
+          result: {
+            current: { getGameById },
+          },
+        } = renderHook(() => useGame(), {
+          wrapper: ProviderWrapper,
+        });
+
+        await getGameById(mockGame.id);
+
+        expect(dispatchSpy).toHaveBeenCalledWith(
+          getGameByIdActionCreator(mockGame)
+        );
+      });
+    });
+
+    describe("and Axios retrn an error", () => {
+      test("Then dispatch should be called with show & hide modal and loading action creators, and modal with an error", async () => {
+        const mockGame = mockGamesListOfFive[3];
+        const {
+          result: {
+            current: { getGameById },
+          },
+        } = renderHook(() => useGame(), {
+          wrapper: ProviderWrapper,
+        });
+        const modalPayload: ShowModalActionPayload = {
+          modalType: "error",
+          message: "No s'ha trobat aquesta partida",
+        };
+
+        await getGameById(mockGame.id);
 
         expect(dispatchSpy).toHaveBeenCalledWith(
           showModalActionCreator(modalPayload)
