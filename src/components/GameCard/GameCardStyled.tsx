@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import bkDate from "../../assets/images/bk_date.svg";
-import buttonButtonStyles from "../../styles/buttonStyles";
+import buttonButtonStyles, {
+  buttonIconCardCircle,
+} from "../../styles/buttonStyles";
 
 const GameCardStyled = styled.article`
   width: 100%;
@@ -62,26 +64,23 @@ const GameCardStyled = styled.article`
     }
   }
   .button--button {
+    ${buttonButtonStyles};
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    ${buttonButtonStyles};
     &:hover,
     &:focus {
       background-color: ${(props) => props.theme.colors.primary.base};
     }
   }
   .button--icon-card.circle {
-    position: absolute;
+    ${buttonIconCardCircle};
     top: 15px;
     right: 15px;
     height: 40px;
     width: 40px;
-    border-radius: 50%;
-    background-color: ${(props) => props.theme.colors.primary.light};
-
     svg {
       font-size: 2.5rem;
     }

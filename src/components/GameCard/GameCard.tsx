@@ -1,6 +1,6 @@
 import { Game } from "../../types/gameTypes";
 import GameCardStyled from "./GameCardStyled";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import { FiInfo, FiEdit, FiTrash2 } from "react-icons/fi";
 import useGame from "../../hooks/useGames/useGames";
@@ -26,6 +26,7 @@ const GameCard = ({
   },
 }: GameCardProps): JSX.Element => {
   const newDate = Date.parse(dateTime);
+  const navigate = useNavigate();
   const { deleteGame } = useGame();
 
   const handleDelete = () => {
@@ -41,7 +42,11 @@ const GameCard = ({
     <GameCardStyled className="game-card">
       <div className="game__image">
         <img src={picture} alt="gent jugant al mahjong" />
-        <Button className="button--icon-card circle" children={<FiInfo />} />
+        <Button
+          className="button--icon-card circle"
+          children={<FiInfo />}
+          action={() => navigate(`/partida/${id}`)}
+        />
       </div>
       <div className="game__separator">
         <svg

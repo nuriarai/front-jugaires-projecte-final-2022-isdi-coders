@@ -52,7 +52,7 @@ const useGame = () => {
         dispatch(
           showModalActionCreator({
             modalType: "success",
-            message: "El missatge s'ha esborrat correctament",
+            message: "La partida s'ha esborrat correctament",
           })
         );
       } catch (error: unknown) {
