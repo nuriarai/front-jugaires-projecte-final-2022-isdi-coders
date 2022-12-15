@@ -6,6 +6,14 @@ import { Game } from "../../types/gameTypes";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import GameCard from "./GameCard";
 
+window.scrollTo = jest.fn();
+afterEach(() => {
+  jest.resetAllMocks();
+});
+afterAll(() => {
+  jest.clearAllMocks();
+});
+
 const mockDelete = jest.fn();
 jest.mock("../../hooks/useGames/useGames.ts", () => {
   return () => ({
