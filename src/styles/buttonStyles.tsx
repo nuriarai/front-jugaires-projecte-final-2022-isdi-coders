@@ -28,6 +28,17 @@ const buttonButtonStyles = css`
   }
 `;
 
-export const buttonIconCard = css``;
+export const buttonIconCardCircle = css`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: ${(props) => props.theme.colors.primary.light};
+  &:hover,
+  &:focus {
+    background-color: ${(props) => props.theme.colors.primary.light};
+  }
+`;
 
 export default buttonButtonStyles;
