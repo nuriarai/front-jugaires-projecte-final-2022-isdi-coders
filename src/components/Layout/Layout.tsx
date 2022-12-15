@@ -6,6 +6,7 @@ import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import GamesPage from "../../pages/GamesPage/GamesPage";
 import Header from "../Header/Header";
 import NewGameFormPage from "../../pages/NewGamePage/NewGamePage";
+import DetailGamePage from "../../pages/DetailGamePage/DetailGamePage";
 
 const Layout = (): JSX.Element => {
   return (
@@ -17,6 +18,7 @@ const Layout = (): JSX.Element => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/partides" element={<GamesPage />} />
+          <Route path="/partida/:id" element={<DetailGamePage />} />
           <Route path="/nova-partida" element={<NewGameFormPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
