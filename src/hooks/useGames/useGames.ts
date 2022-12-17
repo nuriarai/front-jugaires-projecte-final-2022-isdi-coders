@@ -5,6 +5,8 @@ import {
   deleteGameActionCreator,
   getGameByIdActionCreator,
   loadGamesActionCreator,
+  loadGamesPagesActionCreator,
+  loadMoreGamesActionCreator,
 } from "../../redux/features/gamesSlice/gamesSlice";
 
 import {
@@ -22,24 +24,48 @@ const useGame = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const loadGames = useCallback(async () => {
-    try {
-      dispatch(showLoadingActionCreator());
-      const response = await axios.get(`${apiUrl}/games/games`);
+  const loadGames = useCallback(
+    async (page = 0, gameBoard?: string) => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const response = await axios.get(`${apiUrl}/games/games`, {
+          params: {
+            page,
+            gameBoard,
+          },
+        });
 
-      dispatch(loadGamesActionCreator(response.data.games));
-      dispatch(hideLoadingActionCreator());
-    } catch (error: unknown) {
-      dispatch(hideLoadingActionCreator());
+        // console.log(response);
+        const { games, isNextPage, totalPages } = response.data;
 
-      dispatch(
-        showModalActionCreator({
-          modalType: "error",
-          message: (error as AxiosError<AxiosResponse>).response?.data.error!,
-        })
-      );
-    }
-  }, [dispatch]);
+        if (page === 0) {
+          dispatch(loadGamesActionCreator(games));
+        } else {
+          dispatch(loadMoreGamesActionCreator(games));
+        }
+
+        dispatch(
+          loadGamesPagesActionCreator({
+            totalPages,
+            isNextPage: isNextPage,
+            currentPage: page,
+          })
+        );
+
+        dispatch(hideLoadingActionCreator());
+      } catch (error: unknown) {
+        dispatch(hideLoadingActionCreator());
+
+        dispatch(
+          showModalActionCreator({
+            modalType: "error",
+            message: (error as AxiosError<AxiosResponse>).response?.data.error!,
+          })
+        );
+      }
+    },
+    [dispatch]
+  );
 
   const deleteGame = useCallback(
     async (id: string) => {
@@ -126,4 +152,5 @@ const useGame = () => {
     getGameById,
   };
 };
+
 export default useGame;

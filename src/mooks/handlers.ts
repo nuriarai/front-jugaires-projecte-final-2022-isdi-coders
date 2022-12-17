@@ -48,6 +48,18 @@ const handlers = [
     );
   }),
 
+  rest.get(`${urlApi}/games/games?page=1`, async (req, res, ctx) => {
+    return res.once(
+      ctx.status(200),
+      ctx.json({
+        isPreviousPage: false,
+        isNextPage: true,
+        totalPages: 3,
+        games: mockGamesList,
+      })
+    );
+  }),
+
   rest.delete(`${urlApi}/games/delete/${id}`, async (req, res, ctx) => {
     return res.once(ctx.status(200), ctx.json("Partida esborrada"));
   }),

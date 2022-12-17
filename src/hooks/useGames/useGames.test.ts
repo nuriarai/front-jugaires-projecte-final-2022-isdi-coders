@@ -1,15 +1,20 @@
 import { renderHook } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
 import mockInitialStore from "../../mooks/mockInitialStore";
 import { ShowModalActionPayload } from "../../redux/features/types";
 import { showModalActionCreator } from "../../redux/features/uiSlice";
 import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
 import useGame from "./useGames";
-import { mockGamesListOfFive } from "../../mooks/mocksGames";
+import {
+  mockGamesList,
+  mockGamesListOfFive,
+  mockGamesListOfMany,
+} from "../../mooks/mocksGames";
 import {
   deleteGameActionCreator,
   getGameByIdActionCreator,
+  loadMoreGamesActionCreator,
 } from "../../redux/features/gamesSlice/gamesSlice";
-import { act } from "react-dom/test-utils";
 
 const dispatchSpy = jest.spyOn(mockInitialStore, "dispatch");
 beforeEach(() => {
@@ -55,6 +60,24 @@ describe("Given the useGame custom hook", () => {
           showModalActionCreator(modalPayload)
         );
       });
+    });
+  });
+
+  describe("When its method loadGames is invoked with page 1", () => {
+    test("Then it should invoke dispatch with loadMoreGamesAction and a list of games", async () => {
+      const {
+        result: {
+          current: { loadGames },
+        },
+      } = renderHook(() => useGame(), {
+        wrapper: ProviderWrapper,
+      });
+
+      await loadGames(1);
+
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        loadMoreGamesActionCreator(mockGamesList)
+      );
     });
   });
 
