@@ -1,7 +1,7 @@
 import { renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter, useLocation } from "react-router-dom";
-import { mockGamesList } from "../../mooks/mocksGames";
+import { mockGamePages, mockGamesList } from "../../mooks/mocksGames";
 import mockUiState from "../../mooks/mockUiState";
 import { mockUserStateIsLogged } from "../../mooks/mockUserState";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
@@ -23,7 +23,7 @@ describe("Given a Navigation component", () => {
         preloadedState: {
           ui: mockUiState,
           user: mockUserStateIsLogged,
-          game: { list: mockGamesList },
+          game: { list: mockGamesList, pages: mockGamePages },
         },
       });
 
@@ -38,7 +38,7 @@ describe("Given a Navigation component", () => {
         preloadedState: {
           ui: mockUiState,
           user: mockUserStateIsLogged,
-          game: { list: mockGamesList },
+          game: { list: mockGamesList, pages: mockGamePages },
         },
       });
 
@@ -56,7 +56,7 @@ describe("Given a Navigation component", () => {
         preloadedState: {
           ui: mockUiState,
           user: mockUserStateIsLogged,
-          game: { list: mockGamesList },
+          game: { list: mockGamesList, pages: mockGamePages },
         },
       });
       const link = screen.queryByRole("link", { name: linkText });
