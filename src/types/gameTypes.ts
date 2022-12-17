@@ -31,4 +31,16 @@ export interface GameBase {
 export interface GamesState {
   list: Game[];
   currentGame?: Game;
+  pages: GamesPagination;
+  filter?: GamesFilter;
+}
+
+export interface GamesPagination {
+  currentPage: number;
+  totalPages: number;
+  isNextPage: boolean;
+}
+
+export interface GamesFilter {
+  gameBoard: string;
 }
