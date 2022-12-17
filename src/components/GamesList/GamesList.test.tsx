@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
-import { mockGamesList } from "../../mooks/mocksGames";
-import { store } from "../../redux/store";
+import { mockGamePages, mockGamesList } from "../../mooks/mocksGames";
 import mockUiState from "../../mooks/mockUiState";
 import mockUserState from "../../mooks/mockUserState";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
@@ -15,29 +14,21 @@ jest.mock("../../hooks/useGames/useGames", () => {
 });
 
 describe("Given a list of games component", () => {
-  describe("When it's rendered with a lsit of 2 games", () => {
+  describe("When it's rendered with a list of 2 games", () => {
     test("Then it should show a list of the games returned", () => {
       const numExpectedGames = 2;
 
-      renderWithProviders(<GamesList />, {
+      renderWithProviders(<GamesList games={mockGamesList} />, {
         preloadedState: {
           ui: mockUiState,
           user: mockUserState,
-          game: { list: mockGamesList },
+          game: { list: [], pages: mockGamePages },
         },
       });
 
       const gamesList = screen.queryAllByRole("listitem");
 
       expect(gamesList).toHaveLength(numExpectedGames);
-    });
-
-    test("Then it should call the action", () => {
-      renderWithProviders(<GamesList />, {
-        store: store,
-      });
-
-      expect(mockLoadGames).toHaveBeenCalled();
     });
   });
 });

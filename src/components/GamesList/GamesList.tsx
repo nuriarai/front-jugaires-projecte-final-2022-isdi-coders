@@ -1,17 +1,12 @@
-import { useEffect } from "react";
-import useGame from "../../hooks/useGames/useGames";
-import { useAppSelector } from "../../redux/hooks";
+import { Game } from "../../types/gameTypes";
 import GameCard from "../GameCard/GameCard";
 import GamesListStyled from "./GamesListStyled";
 
-const GamesList = (): JSX.Element => {
-  const games = useAppSelector(({ game: Games }) => Games.list);
-  const { loadGames } = useGame();
+interface GamesListProps {
+  games: Game[];
+}
 
-  useEffect(() => {
-    loadGames();
-  }, [loadGames]);
-
+const GamesList = ({ games }: GamesListProps): JSX.Element => {
   return (
     <GamesListStyled>
       {games.map((game) => (
