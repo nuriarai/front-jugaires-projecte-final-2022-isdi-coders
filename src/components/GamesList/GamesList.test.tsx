@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import { mockGamePages, mockGamesList } from "../../mooks/mocksGames";
-import { store } from "../../redux/store";
 import mockUiState from "../../mooks/mockUiState";
 import mockUserState from "../../mooks/mockUserState";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
