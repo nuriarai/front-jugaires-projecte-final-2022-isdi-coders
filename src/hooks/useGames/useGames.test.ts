@@ -5,11 +5,7 @@ import { ShowModalActionPayload } from "../../redux/features/types";
 import { showModalActionCreator } from "../../redux/features/uiSlice";
 import ProviderWrapper from "../../utils/testUtils/ProviderWrapper";
 import useGame from "./useGames";
-import {
-  mockGamesList,
-  mockGamesListOfFive,
-  mockGamesListOfMany,
-} from "../../mooks/mocksGames";
+import { mockGamesList, mockGamesListOfFive } from "../../mooks/mocksGames";
 import {
   deleteGameActionCreator,
   getGameByIdActionCreator,
