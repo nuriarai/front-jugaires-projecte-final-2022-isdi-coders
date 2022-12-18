@@ -2,6 +2,7 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import useGame from "../../hooks/useGames/useGames";
 import { Game } from "../../types/gameTypes";
+import dateFormat from "../../utils/dateFormat";
 import Button from "../Button/Button";
 import GameDetailStyled from "./GameDetailStyled";
 
@@ -28,19 +29,8 @@ const GameDetail = ({
   const { deleteGame } = useGame();
   const navigate = useNavigate();
 
-  const newDate = new Date(dateTime);
-  const date = newDate.toLocaleDateString("ca-CA");
-  const time = newDate.toLocaleTimeString("ca-CA", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
-  // const dateFormated = `el ${date} a les ${time}`;
-
-  const dateFormated = `${date} - ${time}`;
-
   const handleDelete = () => {
-    window.scroll({
+    global.scroll({
       top: 0,
       left: 0,
       behavior: "smooth",
@@ -60,7 +50,7 @@ const GameDetail = ({
       </div>
       <span className="page__title-pre">Partida de </span>
       <h1 className="page__title">{gameBoard}</h1>
-      <span className="game-detail__date">{dateFormated}</span>
+      <span className="game-detail__date">{dateFormat(dateTime)}</span>
 
       <div className="game-detail__content">
         <div className="game-detail__wrap-data game-detail__wrap-data--location">

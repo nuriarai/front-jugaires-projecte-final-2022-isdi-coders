@@ -35,7 +35,7 @@ const mainTheme: DefaultTheme = {
   borderRadius: "22px",
   mediaSizes: {
     small: "550px",
-    medium: "850px",
+    medium: "800px",
     big: "1280px",
   },
   sizes: {
