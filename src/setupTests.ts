@@ -10,3 +10,9 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 
 afterAll(() => server.close());
+
+const windowMock = {
+  scroll: jest.fn(),
+};
+
+Object.assign(global, global, windowMock);
