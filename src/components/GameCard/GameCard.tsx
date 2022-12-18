@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 import { FiInfo, FiEdit, FiTrash2 } from "react-icons/fi";
 import useGame from "../../hooks/useGames/useGames";
+import dateFormat from "../../utils/dateFormat";
 
 interface GameCardProps {
   gameData: Game;
@@ -25,7 +26,6 @@ const GameCard = ({
     observations,
   },
 }: GameCardProps): JSX.Element => {
-  const newDate = Date.parse(dateTime);
   const navigate = useNavigate();
   const { deleteGame } = useGame();
 
@@ -46,6 +46,7 @@ const GameCard = ({
           className="button--icon-card circle"
           children={<FiInfo />}
           action={() => navigate(`/partida/${id}`)}
+          ariaLabel="Anar al detall de la partida"
         />
       </div>
       <div className="game__separator">
@@ -79,7 +80,7 @@ const GameCard = ({
           />
         </div>
         <h2>{gameBoard}</h2>
-        <span className="game__date">{newDate}</span>
+        <span className="game__date">{dateFormat(dateTime)}</span>
         <span className="game__location">{location}</span>
         <span className="game__address">{addressLocation}</span>
         <p className="game__observations">{observations}</p>
