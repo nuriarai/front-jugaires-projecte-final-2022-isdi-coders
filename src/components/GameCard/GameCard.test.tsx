@@ -6,19 +6,25 @@ import { Game } from "../../types/gameTypes";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import GameCard from "./GameCard";
 
-window.scrollTo = jest.fn();
-afterEach(() => {
-  jest.resetAllMocks();
-});
-afterAll(() => {
-  jest.clearAllMocks();
-});
+const mockNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockNavigate,
+}));
 
 const mockDelete = jest.fn();
 jest.mock("../../hooks/useGames/useGames.ts", () => {
   return () => ({
     deleteGame: mockDelete,
   });
+});
+
+afterEach(() => {
+  jest.resetAllMocks();
+});
+
+afterAll(() => {
+  jest.clearAllMocks();
 });
 
 describe("Given a Game card component", () => {
@@ -50,6 +56,23 @@ describe("Given a Game card component", () => {
 
       await userEvent.click(expectedDeleteButton!);
       expect(mockDelete).toHaveBeenCalledWith(gameData.id);
+    });
+  });
+
+  describe("When it's detail info button is clicked", () => {
+    test("Then useNavigate should be called", async () => {
+      let gameData: Game = mockGamesListOfFive[0];
+      const expectedAriaButtonInfo = "Anar al detall de la partida";
+
+      renderWithProviders(<GameCard gameData={gameData} />);
+
+      const expectedInfoButton = screen.getByRole("button", {
+        name: expectedAriaButtonInfo,
+      });
+
+      await userEvent.click(expectedInfoButton);
+
+      expect(mockNavigate).toHaveBeenCalledWith(`/partida/${gameData.id}`);
     });
   });
 });
