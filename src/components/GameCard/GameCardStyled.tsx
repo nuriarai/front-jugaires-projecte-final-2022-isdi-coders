@@ -7,7 +7,6 @@ import buttonButtonStyles, {
 const GameCardStyled = styled.article`
   width: 100%;
   max-width: 335px;
-  margin: 0 auto 50px auto;
   position: relative;
   span {
     margin-bottom: 5px;
