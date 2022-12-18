@@ -52,13 +52,14 @@ const NewGameForm = (): JSX.Element => {
       picture: formData.picture,
       pictureBackup: formData.pictureBackup,
     };
+
     window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
     await createGame(formDataToSubmit);
-    //todo: only reset form if no error
+
     setFormData(initialFormData);
   };
 
@@ -78,12 +79,12 @@ const NewGameForm = (): JSX.Element => {
             onChange={handleOnChange}
           >
             <option value="default">Escull una opció</option>
-            <option value="podrida">Podrida</option>
-            <option value="canasta">Canasta</option>
-            <option value="domino">Dòmino</option>
-            <option value="continental">Continental</option>
-            <option value="butifarra">Butifarra</option>
-            <option value="mentider-daus">Mentider (daus)</option>
+            <option value="Podrida">Podrida</option>
+            <option value="Canasta">Canasta</option>
+            <option value="Dòmino">Dòmino</option>
+            <option value="Continental">Continental</option>
+            <option value="Butifarra">Butifarra</option>
+            <option value="Mentider">Mentider (daus)</option>
           </select>
         </div>
         <div className="form__wrap-element">

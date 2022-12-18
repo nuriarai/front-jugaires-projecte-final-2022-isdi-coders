@@ -30,7 +30,7 @@ const GameDetail = ({
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    global.scroll({
+    window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth",
