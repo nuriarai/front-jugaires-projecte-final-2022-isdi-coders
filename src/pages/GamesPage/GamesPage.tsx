@@ -65,9 +65,10 @@ const GamesPage = (): JSX.Element => {
       <GamesList games={games} />
       {isNextPage && (
         <Button
-          className="button--button button--reverse"
-          text="Más partides"
+          className="button--button button--reversed"
+          text="Més partides"
           action={loadMoreGames}
+          ariaLabel="Carregar més partides"
         />
       )}
     </GamesPageStyled>

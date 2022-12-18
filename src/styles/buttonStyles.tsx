@@ -11,7 +11,6 @@ const buttonButtonStyles = css`
   height: 55px;
   padding: 10px 20px;
   text-align: center;
-  font-weight: bold;
   font-size: ${(props) => props.theme.fontSizes.big};
   &:hover,
   &:focus,

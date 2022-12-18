@@ -35,7 +35,6 @@ const useGame = () => {
           },
         });
 
-        // console.log(response);
         const { games, isNextPage, totalPages } = response.data;
 
         if (page === 0) {

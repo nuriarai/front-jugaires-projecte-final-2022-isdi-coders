@@ -21,7 +21,7 @@ const LayoutStyled = styled.div`
 
   a,
   a:visited {
-    color: ${(props) => props.theme.colors.contrast.base};
+    color: ${(props) => props.theme.colors.primary.light};
     &:hover,
     &:focus {
       color: ${(props) => props.theme.colors.primary.light};

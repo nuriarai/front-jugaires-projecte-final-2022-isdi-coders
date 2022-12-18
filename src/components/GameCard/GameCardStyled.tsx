@@ -11,7 +11,8 @@ const GameCardStyled = styled.article`
   span {
     margin-bottom: 5px;
   }
-  h2 {
+  .game__title {
+    text-transform: capitalize;
     margin-bottom: 10px;
     margin-top: -20px;
   }
