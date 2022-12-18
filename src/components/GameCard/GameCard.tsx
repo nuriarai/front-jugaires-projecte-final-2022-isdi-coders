@@ -79,7 +79,7 @@ const GameCard = ({
             action={handleDelete}
           />
         </div>
-        <h2>{gameBoard}</h2>
+        <h2 className="game__title">{gameBoard}</h2>
         <span className="game__date">{dateFormat(dateTime)}</span>
         <span className="game__location">{location}</span>
         <span className="game__address">{addressLocation}</span>

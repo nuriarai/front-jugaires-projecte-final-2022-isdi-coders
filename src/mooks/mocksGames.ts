@@ -3,7 +3,7 @@ import { Game, GamesPagination, GamesState } from "../types/gameTypes";
 
 export const mockGamesListOfFive = getRandomGames(5);
 
-export const mockGamesListOfMany = getRandomGames(20);
+export const mockGamesListOfMany = getRandomGames(10);
 
 export const mockGamesList = getRandomGames(2);
 
