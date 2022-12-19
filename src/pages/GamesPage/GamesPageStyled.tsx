@@ -9,6 +9,8 @@ const GamesPageStyled = styled.div`
     gap: 10px;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    padding: 0;
   }
   .filter {
     &__label {

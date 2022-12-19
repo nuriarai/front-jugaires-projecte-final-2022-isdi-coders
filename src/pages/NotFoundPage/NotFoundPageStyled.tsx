@@ -5,8 +5,6 @@ const NotFoundPageStyled = styled.div`
   width: 100%;
   max-width: 600px;
   border-radius: ${(props) => props.theme.borderRadius};
-  padding: ${(props) => props.theme.sizes.paddingBig}
-    ${(props) => props.theme.sizes.paddingSmall};
 
   .page__404 {
     font-size: 9rem;
@@ -16,6 +14,10 @@ const NotFoundPageStyled = styled.div`
     color: ${(props) => props.theme.colors.primary.light};
     text-align: center;
     font-size: ${(props) => props.theme.fontSizes.big};
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.mediaSizes.minimum}) {
+    padding: ${(props) => props.theme.sizes.paddingBig} 20px;
   }
 
   @media screen and (min-width: ${(props) => props.theme.mediaSizes.medium}) {
