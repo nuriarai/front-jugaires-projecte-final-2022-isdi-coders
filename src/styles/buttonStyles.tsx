@@ -10,6 +10,9 @@ const buttonButtonStyles = css`
   color: ${(props) => props.theme.colors.primary.light};
   height: 55px;
   padding: 10px 20px;
+  display: inherit;
+  margin-right: auto;
+  margin-left: auto;
   text-align: center;
   font-size: ${(props) => props.theme.fontSizes.big};
   font-weight: 600;
