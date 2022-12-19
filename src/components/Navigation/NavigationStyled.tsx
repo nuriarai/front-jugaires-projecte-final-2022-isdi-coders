@@ -78,6 +78,13 @@ const NavigationStyled = styled.div`
       z-index: 1;
     }
 
+    .nav__welcome {
+      color: ${(props) => props.theme.colors.contrast.base};
+      padding: 5px 0;
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
     .visible {
       display: block;
     }

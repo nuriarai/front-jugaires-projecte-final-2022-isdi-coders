@@ -27,7 +27,9 @@ describe("Given a Navigation component", () => {
         },
       });
 
-      const welcomeText = screen.queryByText(`Hola, ${expectedWelcomedName}`);
+      const welcomeText = screen.queryByText(
+        `Hola ${expectedWelcomedName}, benvingut/da!`
+      );
       expect(welcomeText).toBeInTheDocument();
     });
 
