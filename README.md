@@ -1,46 +1,139 @@
-# Getting Started with Create React App
+# Jugaires
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+> This is an app to share game board games in dates and places when and where different people can go, done in MERN stack + typescript.
+> Live demo [_here_](https://nuria-ramoneda-final-project-202209.netlify.app/)
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Api endpoints](#api-endpoints)
+- [Query params](#query-params)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
-### `npm start`
+## General Information
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- This is the final project of Isdi Coders Full Stack Bootcamp Fall 2022. It is not finished but it has a lot of things done.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- With this app I want to connect people that love to play classics cards games, like Canasta or Podrida or Brisca or Continental, or that love to play lier dices or any other classic game board with more people around a table.
 
-### `npm test`
+- I'm a lover of classic game cards and usually I don't have people with who play, it's not easy to find the moment with the friends that like it, so I thought that an application like this could help.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+### Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React JS
+- Typescript
+- Redux
+- Axios
+- StyledComponents
+- Eslint
+- Husky
+- Github actions
+- SonarCloud
+- Netlify (hosting front)
+- Figma (design)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node
+- Express
+- Express validation
+- Mongoose
+- Morgan
+- Jsonwebtoken
+- Bcrypt
+- Chalk
+- Cors
+- Debug
+- Render (hosting back)
+- Supabase (hosting images)
 
-### `npm run eject`
+### Testing
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Jest
+- testing-library
+- msw
+- faker
+- fishery
+- supertest (only back)
+- mongodb-memory-server (only back)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Register new users
+- Login User, not yet persistently
+- Create new games, with the date when it will be, the place, players and image.
+- Load all the games in the database and see first the last in the future.
+- Filter the games by game board, if you are a fan only of one game board, then you can search for the games of this kind only and see the dates.
+- Delete games. At this moment, anyone can delete any game, but in the future, only the owners will.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Api Endpoints
 
-## Learn More
+- "/games": load all games
+- "/game/:id": load only the game with the id received
+- "/delete/:id": remove the game with the id received
+- "/create": create a new game
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Query params
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+At this moments only are acceptable two query params: page and gameBoard. First is, of course, for pagination, and it will be mandatory from now on. The second is optional and only will be used if the user is filtering the list.
+
+## Screenshots
+
+![Login, register, list games](screenshots/Screen_1.png)
+
+![Details & new game](screenshots/Screen_2.png)
+
+<!-- If you have screenshots you'd like to share, include them here. -->
+
+## Setup
+
+You need to clone the Jugaires repository and install the dependencies with npm install.
+
+```
+# clone this reposritory
+$ git clone https://github.com/isdi-coders-2022/Nuria-Ramoneda_Front-Final-Project-202209-BCN.git
+
+# go into the repository & install dependencies
+$ npm install
+
+# run the app
+$ npm start
+```
+
+## Project Status
+
+The project is: _in progress_
+
+## Room for Improvement
+
+Room for improvement:
+
+- Add alt text field for images
+- Selects dropdown styling
+
+To do:
+
+- Finish CRUD with update screen.
+- Protect routes to make public & private list
+- Make owners of games the only with rights to delete or edit games.
+- Show on public list less information about every game
+- Add appointment functionality to the games, and control of how many people is going and how many places are still available.
+- Finish desktop responsive implementation
+- The footer
+
+## Acknowledgements
+
+This project is based on everything learned during the three months of the Isdi Coders bootcamp, so I must thank Mario González for his great teaching work. The assistant professors of the course David, Adrià have also contributed their grain of sand, and also Lorena who has contributed a mountain more than a grain ;). And to all the colleagues in the bootcamp, because we have brought it all together. Thanks to all.
+
+## Contact
+
+Created by @nuriarai
