@@ -12,6 +12,7 @@ const buttonButtonStyles = css`
   padding: 10px 20px;
   text-align: center;
   font-size: ${(props) => props.theme.fontSizes.big};
+  font-weight: 600;
   &:hover,
   &:focus,
   &.button--reversed {
@@ -23,6 +24,7 @@ const buttonButtonStyles = css`
     &:focus {
       background-color: ${(props) => props.theme.colors.primary.dark};
       color: ${(props) => props.theme.colors.primary.light};
+      border: 1px solid ${(props) => props.theme.colors.primary.light};
     }
   }
 `;

@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { store } from "./redux/store";
 import "@fontsource/open-sans";
+import "@fontsource/open-sans/600.css";
 import "@fontsource/open-sans/700.css";
 import "@fontsource/oranienbaum";
 import mainTheme from "./styles/mainTheme";

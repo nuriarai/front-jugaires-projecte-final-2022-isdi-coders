@@ -30,8 +30,8 @@ const Navigation = (): JSX.Element => {
         </span>
       </div>
       <nav className={`menu__navigation ${isOpen && "opened"}`}>
-        <span className={isLogged ? "visible" : "hidden"}>
-          Hola, {username}
+        <span className={`nav__welcome ${isLogged ? "visible" : "hidden"}`}>
+          Hola {username}, benvingut/da!
         </span>
         <ul>
           <li>
