@@ -10,8 +10,8 @@ const GameDetailStyled = styled.article`
   .game-detail__image img {
     display: block;
     margin: 0 auto 20px;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border-radius: 50%;
   }

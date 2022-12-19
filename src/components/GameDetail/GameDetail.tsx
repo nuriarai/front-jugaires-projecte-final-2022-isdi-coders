@@ -46,7 +46,7 @@ const GameDetail = ({
   return (
     <GameDetailStyled className="game-detail">
       <div className="game-detail__image">
-        <img src={picture} alt="gent jugant al mahjong" />
+        <img src={picture} width="300" height="300" alt="" />
       </div>
       <span className="page__title-pre">Partida de </span>
       <h1 className="page__title">{gameBoard}</h1>

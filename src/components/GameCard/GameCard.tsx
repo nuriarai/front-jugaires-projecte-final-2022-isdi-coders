@@ -41,7 +41,7 @@ const GameCard = ({
   return (
     <GameCardStyled className="game-card">
       <div className="game__image">
-        <img src={picture} alt="gent jugant al mahjong" />
+        <img src={picture} width="335" height="189" alt="" />
         <Button
           className="button--icon-card circle"
           children={<FiInfo />}

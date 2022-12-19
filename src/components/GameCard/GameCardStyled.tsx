@@ -22,6 +22,7 @@ const GameCardStyled = styled.article`
   .game__image img {
     border-top-right-radius: ${(props) => props.theme.borderRadius};
     border-top-left-radius: ${(props) => props.theme.borderRadius};
+    object-fit: cover;
   }
   .game__separator {
     height: 45px;

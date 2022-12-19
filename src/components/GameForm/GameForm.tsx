@@ -8,10 +8,8 @@ const initialFormData: GameBase = {
   owner: "637d14f8ebf9a87c51fcb77f",
   gameBoard: "",
   dateTime: "",
-  picture:
-    "https://s1.eestatic.com/2021/09/04/ocio/609450308_205727591_1706x960.jpg",
-  pictureBackup:
-    "https://s1.eestatic.com/2021/09/04/ocio/609450308_205727591_1706x960.jpg",
+  picture: "",
+  pictureBackup: "",
   location: "",
   addressLocation: "",
   minPlayers: 2,
@@ -50,7 +48,7 @@ const NewGameForm = (): JSX.Element => {
       duration: formData.duration,
       observations: formData.observations,
       picture: formData.picture,
-      pictureBackup: formData.pictureBackup,
+      pictureBackup: formData.picture,
     };
 
     window.scroll({
@@ -59,8 +57,6 @@ const NewGameForm = (): JSX.Element => {
       behavior: "smooth",
     });
     await createGame(formDataToSubmit);
-
-    setFormData(initialFormData);
   };
 
   return (
@@ -98,7 +94,7 @@ const NewGameForm = (): JSX.Element => {
             onChange={handleOnChange}
           />
         </div>
-        <div className="form__wrap-element">
+        <div className="form__wrap-element" hidden>
           <label className="form__label" htmlFor="picture-file">
             Imatge:
           </label>
@@ -109,6 +105,19 @@ const NewGameForm = (): JSX.Element => {
             onChange={handleOnChange}
           />
         </div>
+
+        <div className="form__wrap-element">
+          <label className="form__label" htmlFor="picture">
+            Imatge de la partida:
+          </label>
+          <input
+            type="text"
+            id="picture"
+            value={formData.picture}
+            onChange={handleOnChange}
+          />
+        </div>
+
         <div className="form__wrap-element">
           <label className="form__label" htmlFor="location">
             Lloc on es farà la partida:
