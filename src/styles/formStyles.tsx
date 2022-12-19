@@ -5,10 +5,6 @@ const AllFormsStyled = styled.div`
     width: 100%;
     max-width: 335px;
     margin: 0 auto;
-    padding: ${(props) => props.theme.sizes.paddingBig}
-      ${(props) => props.theme.sizes.paddingSmall};
-    border-radius: ${(props) => props.theme.borderRadius};
-    background-color: ${(props) => props.theme.colors.primary.base};
   }
   input,
   textarea,
@@ -38,6 +34,12 @@ const AllFormsStyled = styled.div`
     display: none;
   }
 
+  @media screen and (min-width: ${(props) => props.theme.mediaSizes.minimum}) {
+    padding: ${(props) => props.theme.sizes.paddingBig} 20px;
+    border-radius: ${(props) => props.theme.borderRadius};
+    background-color: ${(props) => props.theme.colors.primary.base};
+  }
+
   @media screen and (min-width: ${(props) => props.theme.mediaSizes.medium}) {
     display: flex;
     justify-content: center;
@@ -45,8 +47,7 @@ const AllFormsStyled = styled.div`
 
     form {
       max-width: 375px;
-      padding: ${(props) => props.theme.sizes.paddingBig}
-        ${(props) => props.theme.sizes.paddingBig};
+      padding: ${(props) => props.theme.sizes.paddingBig} 20px;
       margin: 0;
     }
 
@@ -96,6 +97,9 @@ const AllFormsStyled = styled.div`
   :focus-visible {
     outline: none;
     outline-offset: none;
+  }
+  a.access__link {
+    text-decoration: underline;
   }
 `;
 

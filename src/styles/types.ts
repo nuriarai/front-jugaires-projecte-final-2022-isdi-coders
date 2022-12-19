@@ -35,6 +35,7 @@ declare module "styled-components" {
     };
     borderRadius: string;
     mediaSizes: {
+      minimum: string;
       small: string;
       medium: string;
       big: string;
