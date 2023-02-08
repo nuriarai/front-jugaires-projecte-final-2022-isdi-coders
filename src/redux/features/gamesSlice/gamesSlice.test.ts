@@ -115,8 +115,8 @@ describe("Given a function gamesSlice", () => {
     });
   });
 
-  describe("When the filterGamesActionCreator is invoked with gameBoard 'butifarra'", () => {
-    test("Then it should return a new state with current page 0 and the games with gameBoard = 'butifarra'", () => {
+  describe("When the filterGamesActionCreator is invoked with one gameBoard selected", () => {
+    test("Then it should return a new state with current page 0 and the games that has the gameboard selected'", () => {
       const currentGamesState: GamesState = {
         list: mockGamesListOfMany,
         pages: { currentPage: 0, totalPages: 2, isNextPage: true },
